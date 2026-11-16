@@ -1,6 +1,7 @@
 # Prescriptive Reliability Agent
 
 **From "something is wrong" to "here is what's failing, why, how urgent it is, and what to do."**
+**▶ Live demo:** https://k101-reliability-agent.streamlit.app — pick a fault in the sidebar and check whether the agent's diagnosis matches the injected ground truth.
 
 Condition-monitoring and predictive-maintenance platforms are now good at *detecting* that equipment is
 unhealthy. The expensive part still happens afterwards, by hand: a reliability engineer works out the failure
