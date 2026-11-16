@@ -1,0 +1,36 @@
+{
+  "status": "healthy",
+  "asset": {
+    "tag": "K-101",
+    "name": "Export Gas Compressor",
+    "type": "Centrifugal compressor (motor-driven, VSD), dry gas seals, tilting-pad bearings",
+    "functional_location": "GP-01-COMP-K101",
+    "criticality": "A",
+    "spared": false,
+    "production_impact_per_day_usd": 600000
+  },
+  "analysis_time": "2026-10-30 23:50:00",
+  "alert_time": null,
+  "triggered_sensors": [],
+  "hypotheses": [],
+  "diagnosis": null,
+  "ambiguous": false,
+  "discriminating_checks": [],
+  "history": {},
+  "similar_work_orders": [],
+  "forecast": [],
+  "days_to_trip": null,
+  "priority": {},
+  "economics": {},
+  "actions": {},
+  "notification": {},
+  "summary": "K-101: no abnormal behaviour detected. No action required.",
+  "approval": "N/A",
+  "trace": [
+    {
+      "step": "1 Check",
+      "tool": "detect.first_alert",
+      "result": "No persistent anomaly. Machine healthy."
+    }
+  ]
+}

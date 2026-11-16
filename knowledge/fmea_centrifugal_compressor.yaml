@@ -1,0 +1,296 @@
+# FMEA knowledge library: centrifugal gas compressor
+# -------------------------------------------------------------------------------
+# This is the agent's "reliability brain". Each entry links a failure mode to:
+#   - the SYMPTOM SIGNATURE it leaves in the process / condition data
+#   - how to CONFIRM it (and tell it apart from look-alikes)
+#   - what to DO (immediate, corrective, defect elimination)
+#   - codes for the CMMS work order (ISO 14224-style)
+#
+# symptoms: sensor -> direction (up/down) and weight (1.0 = primary, 0.5 = secondary)
+# pf_interval_days: typical time from detectable symptom (P) to functional failure (F)
+# Values are illustrative engineering judgement, not any operator's data.
+# -------------------------------------------------------------------------------
+
+failure_modes:
+
+  - id: FM01
+    keywords: bearing replaced babbitt wiped pads clearance vibration drive end oil particle
+    name: Journal bearing wear (DE)
+    component: Radial journal bearing, drive end
+    iso14224_failure_mode: VIB - Vibration
+    mechanism: 2.4 Wear
+    severity: 8
+    pf_interval_days: 30
+    symptoms:
+      vib_de:        {direction: up, weight: 1.0}
+      brg_temp_de:   {direction: up, weight: 1.0}
+      vib_nde:       {direction: up, weight: 0.3}
+    causes:
+      - Lube oil contamination or degraded oil (particles, water, varnish)
+      - Insufficient oil film from low supply pressure or high oil temperature
+      - Repeated start/stop or slow-roll operation wiping the babbitt
+    confirm_checks:
+      - Vibration spectrum on DE probes - rising 1x with sub-synchronous content suggests clearance growth
+      - Shaft centreline plot - shift of journal position within bearing clearance
+      - Lube oil sample - particle count (ISO 4406), water ppm, elemental (tin/lead = babbitt)
+      - Compare DE vs NDE - localised to DE points to bearing rather than rotor-wide problem
+    immediate_actions:
+      - Increase monitoring of DE vibration and bearing temperature to hourly review
+      - Take lube oil sample for urgent analysis
+      - Verify lube oil supply pressure and temperature are within limits
+    corrective_actions:
+      - Plan bearing inspection and replacement at next opportunity window
+      - Check bearing clearances against OEM specification during inspection
+    defect_elimination:
+      - Review lube oil cleanliness programme and filter change interval
+      - Add bearing-temperature-rate-of-change alert to condition monitoring
+    sap_damage_code: WEAR
+    sap_cause_code: LUBE
+
+  - id: FM02
+    keywords: lube oil temperature cooler fouled cleaned fin fan approach
+    name: Lube oil cooler fouling / high oil temperature
+    component: Lube oil system - cooler
+    iso14224_failure_mode: OHE - Overheating
+    mechanism: 5.1 Blockage/plugged
+    severity: 6
+    pf_interval_days: 45
+    symptoms:
+      lube_oil_temp:   {direction: up, weight: 1.0}
+      brg_temp_de:     {direction: up, weight: 0.7}
+      brg_temp_nde:    {direction: up, weight: 0.7}
+      thrust_brg_temp: {direction: up, weight: 0.7}
+      lube_oil_press:  {direction: down, weight: 0.3}
+    causes:
+      - Cooler fouling on water or air side
+      - Cooling water flow reduced or temperature control valve stuck
+      - High ambient temperature exceeding cooler design margin
+    confirm_checks:
+      - All bearing temperatures rising together (system-wide, not one bearing)
+      - Cooler inlet/outlet temperature approach compared with design
+      - Temperature control valve position and cooling medium flow
+    immediate_actions:
+      - Switch to standby cooler if installed
+      - Check cooling water supply and temperature control valve operation
+    corrective_actions:
+      - Clean cooler (tube bundle or fin fan) at next opportunity
+    defect_elimination:
+      - Add cooler approach temperature as a monitored KPI
+      - Review cooling water treatment programme
+    sap_damage_code: FOUL
+    sap_cause_code: HEAT
+
+  - id: FM03
+    keywords: alignment coupling shims 2x axial soft foot baseplate
+    name: Shaft misalignment (coupling)
+    component: Coupling / driver-compressor alignment
+    iso14224_failure_mode: VIB - Vibration
+    mechanism: 1.3 Clearance/alignment failure
+    severity: 7
+    pf_interval_days: 60
+    symptoms:
+      vib_de:       {direction: up, weight: 1.0}
+      vib_nde:      {direction: up, weight: 0.6}
+      axial_disp:   {direction: up, weight: 0.8}
+      brg_temp_de:  {direction: up, weight: 0.5}
+    causes:
+      - Thermal growth not allowed for in cold alignment
+      - Foundation or baseplate settlement, soft foot
+      - Pipe strain from suction/discharge piping
+    confirm_checks:
+      - Vibration spectrum - strong 2x component and high axial vibration
+      - Phase across coupling ~180 degrees
+      - Hot alignment check (laser) at next opportunity
+    immediate_actions:
+      - Trend 2x vibration component and axial position
+      - Inspect coupling guard area for heat or abnormal noise
+    corrective_actions:
+      - Hot alignment check and correction at next shutdown
+      - Inspect coupling elements for wear or damage
+    defect_elimination:
+      - Verify thermal growth offsets in alignment procedure
+      - Pipe strain check during next turnaround
+    sap_damage_code: MISA
+    sap_cause_code: INST
+
+  - id: FM04
+    keywords: 1x vibration both ends rotor deposits balance online wash carry-over scrubber
+    name: Rotor imbalance (deposit build-up or loss of material)
+    component: Rotor / impellers
+    iso14224_failure_mode: VIB - Vibration
+    mechanism: 1.2 Vibration
+    severity: 7
+    pf_interval_days: 45
+    symptoms:
+      vib_de:          {direction: up, weight: 1.0}
+      vib_nde:         {direction: up, weight: 1.0}
+      polytropic_eff:  {direction: down, weight: 0.3}
+    causes:
+      - Uneven deposit build-up on impellers (salts, polymers, liquids carry-over)
+      - Deposit shedding from one part of rotor
+      - Erosion or loss of a rotor component
+    confirm_checks:
+      - Vibration spectrum - dominant 1x at both bearings, similar magnitude
+      - 1x phase stable; amplitude changes with speed squared
+      - Check upstream separator performance for liquid carry-over
+    immediate_actions:
+      - Review upstream scrubber/separator level and drain operation
+      - Trend 1x amplitude and phase at both ends
+    corrective_actions:
+      - Consider online wash if deposit-related and OEM-approved
+      - Plan rotor inspection / high-speed balance at next shutdown
+    defect_elimination:
+      - Gas composition and liquid carry-over study
+      - Review scrubber design margin and level control
+    sap_damage_code: IMBL
+    sap_cause_code: PROC
+
+  - id: FM05
+    keywords: efficiency head loss performance fouling wash deposits salt discharge temperature
+    name: Impeller / aerodynamic fouling
+    component: Impellers and diffusers
+    iso14224_failure_mode: PDE - Parameter deviation
+    mechanism: 5.2 Contamination
+    severity: 5
+    pf_interval_days: 90
+    symptoms:
+      polytropic_eff:  {direction: down, weight: 1.0}
+      discharge_temp:  {direction: up, weight: 0.8}
+      power:           {direction: up, weight: 0.7}
+      flow:            {direction: down, weight: 0.6}
+    causes:
+      - Deposits from gas contaminants (salts, hydrocarbons, corrosion products)
+      - Poor upstream filtration / separation
+    confirm_checks:
+      - Polytropic efficiency and head trend corrected for operating point (performance curve)
+      - Rule out instrument drift on temperature transmitters
+      - Gas analysis for contaminants
+    immediate_actions:
+      - Validate performance calculation and transmitter calibration
+      - Quantify energy and throughput loss per day
+    corrective_actions:
+      - Online wash if OEM-approved, otherwise plan offline cleaning
+    defect_elimination:
+      - Improve upstream filtration/separation
+      - Set efficiency-loss threshold that triggers wash economically
+    sap_damage_code: FOUL
+    sap_cause_code: PROC
+
+  - id: FM06
+    keywords: dry gas seal primary vent leakage cartridge seal gas filter heater
+    name: Dry gas seal degradation
+    component: Dry gas seal (primary stage)
+    iso14224_failure_mode: ELP - External leakage, process medium
+    mechanism: 1.1 Leakage
+    severity: 9
+    pf_interval_days: 21
+    symptoms:
+      primary_vent_flow: {direction: up, weight: 1.0}
+      seal_gas_dp:       {direction: down, weight: 1.0}
+    causes:
+      - Contaminated or wet seal gas (liquids, particles) damaging seal faces
+      - Seal gas filter differential pressure high / filter bypass
+      - Reverse pressurisation or slow-roll operation
+    confirm_checks:
+      - Primary vent flow trend and step changes
+      - Seal gas filter differential pressure and conditioning skid heater status
+      - Secondary vent flow - rising too suggests progression to outer seal
+    immediate_actions:
+      - Check seal gas supply, filter DP and seal gas heater
+      - Increase frequency of vent flow review; prepare for controlled shutdown if trip limit approached
+    corrective_actions:
+      - Plan seal cartridge replacement - long lead item, check spares availability now
+    defect_elimination:
+      - Seal gas conditioning review (dew point margin, filtration)
+      - Add seal gas quality monitoring
+    sap_damage_code: LEAK
+    sap_cause_code: CONT
+
+  - id: FM07
+    keywords: thrust pad axial position balance piston surge
+    name: Thrust bearing wear
+    component: Thrust bearing
+    iso14224_failure_mode: OHE - Overheating
+    mechanism: 2.4 Wear
+    severity: 9
+    pf_interval_days: 21
+    symptoms:
+      axial_disp:      {direction: up, weight: 1.0}
+      thrust_brg_temp: {direction: up, weight: 1.0}
+      vib_de:          {direction: up, weight: 0.2}
+    causes:
+      - Excessive thrust load from balance piston seal wear or process upsets
+      - Liquid slugging or surge events
+      - Lube oil contamination
+    confirm_checks:
+      - Axial position trend vs thrust pad temperatures (active vs inactive side)
+      - Balance line differential pressure / flow
+      - Event log - surge or liquid ingestion events before onset
+    immediate_actions:
+      - Review recent surge events and anti-surge controller behaviour
+      - Increase monitoring; confirm axial position probes are healthy
+    corrective_actions:
+      - Plan thrust bearing inspection; check balance piston labyrinth clearance
+    defect_elimination:
+      - Anti-surge controller tuning review
+      - Balance piston seal condition monitoring via balance line DP
+    sap_damage_code: WEAR
+    sap_cause_code: OPER
+
+  - id: FM08
+    keywords: recycle anti-surge valve passing leak by trim seat positioner
+    name: Anti-surge (recycle) valve passing
+    component: Anti-surge control valve
+    iso14224_failure_mode: ILP/LOO - Internal leakage / low output
+    mechanism: 1.1 Leakage
+    severity: 5
+    pf_interval_days: 120
+    symptoms:
+      suction_temp:   {direction: up, weight: 1.0}
+      power:          {direction: up, weight: 1.0}
+      flow:           {direction: down, weight: 0.8}
+      discharge_temp: {direction: up, weight: 0.5}
+    causes:
+      - Seat or trim damage on recycle valve
+      - Valve not fully closing (positioner calibration, actuator issue)
+    confirm_checks:
+      - Valve position feedback vs demand - should be 0% at normal load
+      - Acoustic or temperature check downstream of valve (hot pipe when shut)
+      - Compressor flow vs export flow mass balance
+    immediate_actions:
+      - Check positioner, stroke the valve if safe to do so
+      - Quantify recycled energy loss (kW and USD/day)
+    corrective_actions:
+      - Overhaul valve trim at next opportunity
+    defect_elimination:
+      - Add valve signature / partial stroke diagnostics
+    sap_damage_code: LEAK
+    sap_cause_code: WEAR
+
+  - id: FM09
+    keywords: suction strainer blocked debris scale element
+    name: Suction strainer / filter blockage
+    component: Suction strainer
+    iso14224_failure_mode: LOO - Low output
+    mechanism: 5.1 Blockage/plugged
+    severity: 6
+    pf_interval_days: 30
+    symptoms:
+      suction_pressure: {direction: down, weight: 1.0}
+      flow:             {direction: down, weight: 0.8}
+      discharge_temp:   {direction: up, weight: 0.5}
+    causes:
+      - Debris or corrosion products from upstream piping
+      - Hydrates or wax deposition
+    confirm_checks:
+      - Strainer differential pressure (if instrumented)
+      - Compare upstream header pressure with compressor suction pressure
+    immediate_actions:
+      - Check strainer DP; switch to standby strainer if available
+      - Watch suction pressure vs low-pressure trip
+    corrective_actions:
+      - Clean or replace strainer element
+    defect_elimination:
+      - Identify debris source; add strainer DP alarm if missing
+    sap_damage_code: BLOC
+    sap_cause_code: PROC

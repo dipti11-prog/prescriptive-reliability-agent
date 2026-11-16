@@ -1,0 +1,410 @@
+{
+  "status": "alert",
+  "asset": {
+    "tag": "K-101",
+    "name": "Export Gas Compressor",
+    "type": "Centrifugal compressor (motor-driven, VSD), dry gas seals, tilting-pad bearings",
+    "functional_location": "GP-01-COMP-K101",
+    "criticality": "A",
+    "spared": false,
+    "production_impact_per_day_usd": 600000
+  },
+  "analysis_time": "2026-10-15 18:20:00",
+  "alert_time": "2026-10-12 18:20:00",
+  "triggered_sensors": [
+    "lube_oil_temp"
+  ],
+  "hypotheses": [
+    {
+      "fm_id": "FM02",
+      "name": "Lube oil cooler fouling / high oil temperature",
+      "match_score": 0.45,
+      "likelihood": 1.0,
+      "support": 0.45,
+      "explained": 1.0,
+      "unexplained": []
+    },
+    {
+      "fm_id": "FM07",
+      "name": "Thrust bearing wear",
+      "match_score": 0.047,
+      "likelihood": 0.0,
+      "support": 0.14,
+      "explained": 0.169,
+      "unexplained": [
+        "lube_oil_temp",
+        "brg_temp_nde",
+        "brg_temp_de"
+      ]
+    },
+    {
+      "fm_id": "FM01",
+      "name": "Journal bearing wear (DE)",
+      "match_score": 0.046,
+      "likelihood": 0.0,
+      "support": 0.136,
+      "explained": 0.172,
+      "unexplained": [
+        "lube_oil_temp",
+        "brg_temp_nde",
+        "thrust_brg_temp"
+      ]
+    },
+    {
+      "fm_id": "FM03",
+      "name": "Shaft misalignment (coupling)",
+      "match_score": 0.018,
+      "likelihood": 0.0,
+      "support": 0.054,
+      "explained": 0.172,
+      "unexplained": [
+        "lube_oil_temp",
+        "brg_temp_nde",
+        "thrust_brg_temp"
+      ]
+    },
+    {
+      "fm_id": "FM04",
+      "name": "Rotor imbalance (deposit build-up or loss of material)",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "lube_oil_temp",
+        "brg_temp_nde",
+        "brg_temp_de",
+        "thrust_brg_temp"
+      ]
+    },
+    {
+      "fm_id": "FM05",
+      "name": "Impeller / aerodynamic fouling",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "lube_oil_temp",
+        "brg_temp_nde",
+        "brg_temp_de",
+        "thrust_brg_temp"
+      ]
+    },
+    {
+      "fm_id": "FM06",
+      "name": "Dry gas seal degradation",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "lube_oil_temp",
+        "brg_temp_nde",
+        "brg_temp_de",
+        "thrust_brg_temp"
+      ]
+    },
+    {
+      "fm_id": "FM08",
+      "name": "Anti-surge (recycle) valve passing",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "lube_oil_temp",
+        "brg_temp_nde",
+        "brg_temp_de",
+        "thrust_brg_temp"
+      ]
+    },
+    {
+      "fm_id": "FM09",
+      "name": "Suction strainer / filter blockage",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "lube_oil_temp",
+        "brg_temp_nde",
+        "brg_temp_de",
+        "thrust_brg_temp"
+      ]
+    }
+  ],
+  "diagnosis": {
+    "fm_id": "FM02",
+    "name": "Lube oil cooler fouling / high oil temperature",
+    "component": "Lube oil system - cooler",
+    "match_score": 0.45,
+    "likelihood": 1.0,
+    "severity": 6,
+    "pf_interval_days": 45,
+    "iso14224_failure_mode": "OHE - Overheating",
+    "mechanism": "5.1 Blockage/plugged",
+    "likely_causes": [
+      "Cooler fouling on water or air side",
+      "Cooling water flow reduced or temperature control valve stuck",
+      "High ambient temperature exceeding cooler design margin"
+    ],
+    "evidence": [
+      {
+        "sensor": "lube_oil_temp",
+        "label": "Lube oil supply temp",
+        "expected": "up",
+        "weight": 1.0,
+        "z": 17.6,
+        "verdict": "supports"
+      },
+      {
+        "sensor": "brg_temp_de",
+        "label": "Journal bearing temp DE",
+        "expected": "up",
+        "weight": 0.7,
+        "z": 3.7,
+        "verdict": "supports"
+      },
+      {
+        "sensor": "brg_temp_nde",
+        "label": "Journal bearing temp NDE",
+        "expected": "up",
+        "weight": 0.7,
+        "z": 3.7,
+        "verdict": "supports"
+      },
+      {
+        "sensor": "thrust_brg_temp",
+        "label": "Thrust bearing temp",
+        "expected": "up",
+        "weight": 0.7,
+        "z": 3.8,
+        "verdict": "supports"
+      },
+      {
+        "sensor": "lube_oil_press",
+        "label": "Lube oil supply press",
+        "expected": "down",
+        "weight": 0.3,
+        "z": -0.9,
+        "verdict": "not seen"
+      }
+    ],
+    "unexplained": []
+  },
+  "ambiguous": false,
+  "discriminating_checks": [],
+  "history": {
+    "count": 0,
+    "coded": 0,
+    "found_by_text_only": 0,
+    "total_cost_usd": 0.0,
+    "total_downtime_h": 0.0,
+    "wo_ids": [],
+    "dates": [],
+    "bad_actor": false
+  },
+  "similar_work_orders": [
+    {
+      "wo_id": "WO400148",
+      "date": "2023-08-30",
+      "equipment": "K-101",
+      "short_text": "LO cooler cleaning",
+      "long_text": "Fin fan lube oil cooler dirty, approach temp high. Cleaned and TCV checked.",
+      "cost_usd": 8900.0,
+      "downtime_h": 6.9,
+      "similarity": 0.405
+    },
+    {
+      "wo_id": "WO400199",
+      "date": "2025-06-19",
+      "equipment": "K-101",
+      "short_text": "DE brg high vib + temp",
+      "long_text": "DE journal bearing vibration trending up, bearing temp high. Bearing replaced, babbitt wiped, oil sample showed high particle count.",
+      "cost_usd": 50500.0,
+      "downtime_h": 43.0,
+      "similarity": 0.251
+    },
+    {
+      "wo_id": "WO400162",
+      "date": "2024-02-02",
+      "equipment": "K-101",
+      "short_text": "K brg DE replaced",
+      "long_text": "Radial bearing DE found worn on inspection, clearance above OEM limit. New pads fitted. Lube oil changed.",
+      "cost_usd": 44700.0,
+      "downtime_h": 35.6,
+      "similarity": 0.137
+    },
+    {
+      "wo_id": "WO400156",
+      "date": "2023-12-12",
+      "equipment": "K-201",
+      "short_text": "High vibration drive end",
+      "long_text": "Vibration alarm DE probes. Shaft centreline shift. Bearing pads scored - replaced. Recommend oil cleanliness review.",
+      "cost_usd": 55200.0,
+      "downtime_h": 38.8,
+      "similarity": 0.119
+    },
+    {
+      "wo_id": "WO400109",
+      "date": "2022-03-14",
+      "equipment": "K-101",
+      "short_text": "Seal gas leak NDE",
+      "long_text": "Dry gas seal leakage NDE, faces damaged by liquids in seal gas. Seal replaced, heater repaired.",
+      "cost_usd": 163400.0,
+      "downtime_h": 72.4,
+      "similarity": 0.118
+    }
+  ],
+  "forecast": [
+    {
+      "sensor": "lube_oil_temp",
+      "label": "Lube oil supply temp",
+      "unit": "degC",
+      "normal": 48.0,
+      "now": 50.28,
+      "alarm": 60.0,
+      "trip": 66.0,
+      "days_to_alarm": 11.4,
+      "days_to_trip": 15.3
+    },
+    {
+      "sensor": "brg_temp_de",
+      "label": "Journal bearing temp DE",
+      "unit": "degC",
+      "normal": 85.0,
+      "now": 86.71,
+      "alarm": 110.0,
+      "trip": 120.0,
+      "days_to_alarm": 53.4,
+      "days_to_trip": 69.7
+    },
+    {
+      "sensor": "brg_temp_nde",
+      "label": "Journal bearing temp NDE",
+      "unit": "degC",
+      "normal": 82.0,
+      "now": 84.09,
+      "alarm": 110.0,
+      "trip": 120.0,
+      "days_to_alarm": 30.9,
+      "days_to_trip": 38.1
+    },
+    {
+      "sensor": "thrust_brg_temp",
+      "label": "Thrust bearing temp",
+      "unit": "degC",
+      "normal": 88.0,
+      "now": 89.83,
+      "alarm": 115.0,
+      "trip": 125.0,
+      "days_to_alarm": 81.1,
+      "days_to_trip": null
+    }
+  ],
+  "days_to_trip": 15.3,
+  "priority": {
+    "level": 3,
+    "label": "Planned",
+    "window": "schedule within 30 days",
+    "rule_inputs": {
+      "severity": 6,
+      "days_to_trip": 15.3,
+      "criticality": "A",
+      "confidence": 0.45
+    }
+  },
+  "economics": {
+    "repair_cost_usd": 29700.0,
+    "outage_h": 24.9,
+    "unplanned_cost_usd": 1182000.0,
+    "planned_cost_usd": 279000.0,
+    "value_of_acting_now_usd": 903000.0,
+    "basis": "Illustrative: unplanned = 2x repair + 1.8x outage at full production loss; planned = 1x repair + 40% of outage production loss."
+  },
+  "actions": {
+    "confirm": [
+      "All bearing temperatures rising together (system-wide, not one bearing)",
+      "Cooler inlet/outlet temperature approach compared with design",
+      "Temperature control valve position and cooling medium flow"
+    ],
+    "immediate": [
+      "Switch to standby cooler if installed",
+      "Check cooling water supply and temperature control valve operation"
+    ],
+    "corrective": [
+      "Clean cooler (tube bundle or fin fan) at next opportunity"
+    ],
+    "defect_elimination": [
+      "Add cooler approach temperature as a monitored KPI",
+      "Review cooling water treatment programme"
+    ]
+  },
+  "notification": {
+    "notification_type": "M2 - Malfunction report",
+    "functional_location": "GP-01-COMP-K101",
+    "equipment": "K-101",
+    "priority": "3 - Planned",
+    "short_text": "K-101 suspected Lube oil cooler fouling ",
+    "damage_code": "FOUL",
+    "cause_code": "HEAT",
+    "iso14224_failure_mode": "OHE - Overheating",
+    "long_text": "Condition-monitoring alert 12-Oct-2026 18:20. Suspected Lube oil cooler fouling / high oil temperature (match 45%). Evidence: Lube oil supply temp 50.28 degC (normal 48.0), Journal bearing temp DE 86.71 degC (normal 85.0), Journal bearing temp NDE 84.09 degC (normal 82.0). Predicted trip in 15.3 days. Recommended: Switch to standby cooler if installed; Clean cooler (tube bundle or fin fan) at next opportunity.",
+    "status": "DRAFT - requires engineer approval"
+  },
+  "summary": "K-101 Export Gas Compressor: suspected **Lube oil cooler fouling / high oil temperature** (match 45%, likelihood 100% among 9 failure modes). Evidence: Lube oil supply temp up (+18 sigma); Journal bearing temp DE up (+4 sigma); Journal bearing temp NDE up (+4 sigma); Thrust bearing temp up (+4 sigma). At the current trend the machine reaches a trip limit in about 15 days. Priority **P3 Planned** (schedule within 30 days). Planned intervention avoids roughly USD 903,000 versus run-to-failure (illustrative). First action: Switch to standby cooler if installed.",
+  "approval": "PENDING ENGINEER REVIEW",
+  "trace": [
+    {
+      "step": "1 Check",
+      "tool": "detect.first_alert",
+      "result": "Persistent anomaly since 12-Oct 18:20 on lube_oil_temp."
+    },
+    {
+      "step": "2 Diagnose",
+      "tool": "diagnose.diagnose",
+      "result": "FM02 Lube oil cooler fouling / high oil temperature: 100% | FM07 Thrust bearing wear: 0% | FM01 Journal bearing wear (DE): 0%"
+    },
+    {
+      "step": "3 Doubt",
+      "tool": "ambiguity check",
+      "result": "Clear leader (100% ahead of next hypothesis)."
+    },
+    {
+      "step": "4 Recall",
+      "tool": "history.similar_work_orders + recurrence",
+      "result": "5 similar past jobs across fleet; 0 on K-101 in 36 months."
+    },
+    {
+      "step": "5 Forecast",
+      "tool": "detect.time_to_limit",
+      "result": "Earliest predicted trip in 15.3 days."
+    },
+    {
+      "step": "6 Decide",
+      "tool": "priority rules",
+      "result": "P3 Planned - schedule within 30 days."
+    },
+    {
+      "step": "7 Value",
+      "tool": "economics",
+      "result": "Acting now avoids ~USD 903,000 (illustrative)."
+    },
+    {
+      "step": "8 Prescribe",
+      "tool": "FMEA actions",
+      "result": "8 actions across 4 horizons."
+    },
+    {
+      "step": "9 Draft",
+      "tool": "CMMS notification",
+      "result": "Draft M2 notification prepared (not submitted)."
+    },
+    {
+      "step": "10 Hand over",
+      "tool": "narrative",
+      "result": "Summary written. Awaiting engineer approval - nothing executed."
+    }
+  ]
+}

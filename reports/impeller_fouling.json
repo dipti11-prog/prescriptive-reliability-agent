@@ -1,0 +1,312 @@
+{
+  "status": "alert",
+  "asset": {
+    "tag": "K-101",
+    "name": "Export Gas Compressor",
+    "type": "Centrifugal compressor (motor-driven, VSD), dry gas seals, tilting-pad bearings",
+    "functional_location": "GP-01-COMP-K101",
+    "criticality": "A",
+    "spared": false,
+    "production_impact_per_day_usd": 600000
+  },
+  "analysis_time": "2026-10-17 03:10:00",
+  "alert_time": "2026-10-14 03:10:00",
+  "triggered_sensors": [
+    "polytropic_eff"
+  ],
+  "hypotheses": [
+    {
+      "fm_id": "FM05",
+      "name": "Impeller / aerodynamic fouling",
+      "match_score": 0.372,
+      "likelihood": 0.991,
+      "support": 0.372,
+      "explained": 1.0,
+      "unexplained": []
+    },
+    {
+      "fm_id": "FM04",
+      "name": "Rotor imbalance (deposit build-up or loss of material)",
+      "match_score": 0.114,
+      "likelihood": 0.009,
+      "support": 0.13,
+      "explained": 0.838,
+      "unexplained": [
+        "discharge_temp"
+      ]
+    },
+    {
+      "fm_id": "FM09",
+      "name": "Suction strainer / filter blockage",
+      "match_score": 0.014,
+      "likelihood": 0.0,
+      "support": 0.042,
+      "explained": 0.162,
+      "unexplained": [
+        "polytropic_eff"
+      ]
+    },
+    {
+      "fm_id": "FM08",
+      "name": "Anti-surge (recycle) valve passing",
+      "match_score": 0.01,
+      "likelihood": 0.0,
+      "support": 0.029,
+      "explained": 0.162,
+      "unexplained": [
+        "polytropic_eff"
+      ]
+    },
+    {
+      "fm_id": "FM01",
+      "name": "Journal bearing wear (DE)",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "polytropic_eff",
+        "discharge_temp"
+      ]
+    },
+    {
+      "fm_id": "FM02",
+      "name": "Lube oil cooler fouling / high oil temperature",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "polytropic_eff",
+        "discharge_temp"
+      ]
+    },
+    {
+      "fm_id": "FM03",
+      "name": "Shaft misalignment (coupling)",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "polytropic_eff",
+        "discharge_temp"
+      ]
+    },
+    {
+      "fm_id": "FM06",
+      "name": "Dry gas seal degradation",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "polytropic_eff",
+        "discharge_temp"
+      ]
+    },
+    {
+      "fm_id": "FM07",
+      "name": "Thrust bearing wear",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "polytropic_eff",
+        "discharge_temp"
+      ]
+    }
+  ],
+  "diagnosis": {
+    "fm_id": "FM05",
+    "name": "Impeller / aerodynamic fouling",
+    "component": "Impellers and diffusers",
+    "match_score": 0.372,
+    "likelihood": 0.991,
+    "severity": 5,
+    "pf_interval_days": 90,
+    "iso14224_failure_mode": "PDE - Parameter deviation",
+    "mechanism": "5.2 Contamination",
+    "likely_causes": [
+      "Deposits from gas contaminants (salts, hydrocarbons, corrosion products)",
+      "Poor upstream filtration / separation"
+    ],
+    "evidence": [
+      {
+        "sensor": "polytropic_eff",
+        "label": "Polytropic efficiency",
+        "expected": "down",
+        "weight": 1.0,
+        "z": -11.4,
+        "verdict": "supports"
+      },
+      {
+        "sensor": "discharge_temp",
+        "label": "Discharge temperature",
+        "expected": "up",
+        "weight": 0.8,
+        "z": 3.2,
+        "verdict": "supports"
+      },
+      {
+        "sensor": "power",
+        "label": "Motor power",
+        "expected": "up",
+        "weight": 0.7,
+        "z": 1.4,
+        "verdict": "not seen"
+      },
+      {
+        "sensor": "flow",
+        "label": "Export gas flow",
+        "expected": "down",
+        "weight": 0.6,
+        "z": 0.5,
+        "verdict": "not seen"
+      }
+    ],
+    "unexplained": []
+  },
+  "ambiguous": false,
+  "discriminating_checks": [],
+  "history": {
+    "count": 0,
+    "coded": 0,
+    "found_by_text_only": 0,
+    "total_cost_usd": 0.0,
+    "total_downtime_h": 0.0,
+    "wo_ids": [],
+    "dates": [],
+    "bad_actor": false
+  },
+  "similar_work_orders": [
+    {
+      "wo_id": "WO400127",
+      "date": "2022-11-03",
+      "equipment": "K-201",
+      "short_text": "Performance degradation",
+      "long_text": "Head and efficiency loss trend. Fouling confirmed at inspection. Improve inlet separator.",
+      "cost_usd": 28200.0,
+      "downtime_h": 29.4,
+      "similarity": 0.163
+    }
+  ],
+  "forecast": [
+    {
+      "sensor": "discharge_temp",
+      "label": "Discharge temperature",
+      "unit": "degC",
+      "normal": 135.0,
+      "now": 136.75,
+      "alarm": 150.0,
+      "trip": 160.0,
+      "days_to_alarm": 48.3,
+      "days_to_trip": 86.4
+    }
+  ],
+  "days_to_trip": 86.4,
+  "priority": {
+    "level": 4,
+    "label": "Opportunity",
+    "window": "next planned shutdown",
+    "rule_inputs": {
+      "severity": 5,
+      "days_to_trip": 86.4,
+      "criticality": "A",
+      "confidence": 0.37
+    }
+  },
+  "economics": {
+    "repair_cost_usd": 28200.0,
+    "outage_h": 29.4,
+    "unplanned_cost_usd": 1379000.0,
+    "planned_cost_usd": 322000.0,
+    "value_of_acting_now_usd": 1057000.0,
+    "basis": "Illustrative: unplanned = 2x repair + 1.8x outage at full production loss; planned = 1x repair + 40% of outage production loss."
+  },
+  "actions": {
+    "confirm": [
+      "Polytropic efficiency and head trend corrected for operating point (performance curve)",
+      "Rule out instrument drift on temperature transmitters",
+      "Gas analysis for contaminants"
+    ],
+    "immediate": [
+      "Validate performance calculation and transmitter calibration",
+      "Quantify energy and throughput loss per day"
+    ],
+    "corrective": [
+      "Online wash if OEM-approved, otherwise plan offline cleaning"
+    ],
+    "defect_elimination": [
+      "Improve upstream filtration/separation",
+      "Set efficiency-loss threshold that triggers wash economically"
+    ]
+  },
+  "notification": {
+    "notification_type": "M2 - Malfunction report",
+    "functional_location": "GP-01-COMP-K101",
+    "equipment": "K-101",
+    "priority": "4 - Opportunity",
+    "short_text": "K-101 suspected Impeller / aerodynamic f",
+    "damage_code": "FOUL",
+    "cause_code": "PROC",
+    "iso14224_failure_mode": "PDE - Parameter deviation",
+    "long_text": "Condition-monitoring alert 14-Oct-2026 03:10. Suspected Impeller / aerodynamic fouling (match 37%). Evidence: Discharge temperature 136.75 degC (normal 135.0). Predicted trip in 86.4 days. Recommended: Validate performance calculation and transmitter calibration; Online wash if OEM-approved, otherwise plan offline cleaning.",
+    "status": "DRAFT - requires engineer approval"
+  },
+  "summary": "K-101 Export Gas Compressor: suspected **Impeller / aerodynamic fouling** (match 37%, likelihood 99% among 9 failure modes). Evidence: Polytropic efficiency down (-11 sigma); Discharge temperature up (+3 sigma). At the current trend the machine reaches a trip limit in about 86 days. Priority **P4 Opportunity** (next planned shutdown). Planned intervention avoids roughly USD 1,057,000 versus run-to-failure (illustrative). First action: Validate performance calculation and transmitter calibration.",
+  "approval": "PENDING ENGINEER REVIEW",
+  "trace": [
+    {
+      "step": "1 Check",
+      "tool": "detect.first_alert",
+      "result": "Persistent anomaly since 14-Oct 03:10 on polytropic_eff."
+    },
+    {
+      "step": "2 Diagnose",
+      "tool": "diagnose.diagnose",
+      "result": "FM05 Impeller / aerodynamic fouling: 99% | FM04 Rotor imbalance (deposit build-up or loss of material): 1% | FM09 Suction strainer / filter blockage: 0%"
+    },
+    {
+      "step": "3 Doubt",
+      "tool": "ambiguity check",
+      "result": "Clear leader (98% ahead of next hypothesis)."
+    },
+    {
+      "step": "4 Recall",
+      "tool": "history.similar_work_orders + recurrence",
+      "result": "1 similar past jobs across fleet; 0 on K-101 in 36 months."
+    },
+    {
+      "step": "5 Forecast",
+      "tool": "detect.time_to_limit",
+      "result": "Earliest predicted trip in 86.4 days."
+    },
+    {
+      "step": "6 Decide",
+      "tool": "priority rules",
+      "result": "P4 Opportunity - next planned shutdown."
+    },
+    {
+      "step": "7 Value",
+      "tool": "economics",
+      "result": "Acting now avoids ~USD 1,057,000 (illustrative)."
+    },
+    {
+      "step": "8 Prescribe",
+      "tool": "FMEA actions",
+      "result": "8 actions across 4 horizons."
+    },
+    {
+      "step": "9 Draft",
+      "tool": "CMMS notification",
+      "result": "Draft M2 notification prepared (not submitted)."
+    },
+    {
+      "step": "10 Hand over",
+      "tool": "narrative",
+      "result": "Summary written. Awaiting engineer approval - nothing executed."
+    }
+  ]
+}

@@ -1,0 +1,347 @@
+{
+  "status": "alert",
+  "asset": {
+    "tag": "K-101",
+    "name": "Export Gas Compressor",
+    "type": "Centrifugal compressor (motor-driven, VSD), dry gas seals, tilting-pad bearings",
+    "functional_location": "GP-01-COMP-K101",
+    "criticality": "A",
+    "spared": false,
+    "production_impact_per_day_usd": 600000
+  },
+  "analysis_time": "2026-10-14 20:50:00",
+  "alert_time": "2026-10-11 20:50:00",
+  "triggered_sensors": [
+    "axial_disp"
+  ],
+  "hypotheses": [
+    {
+      "fm_id": "FM07",
+      "name": "Thrust bearing wear",
+      "match_score": 0.667,
+      "likelihood": 0.996,
+      "support": 0.667,
+      "explained": 1.0,
+      "unexplained": []
+    },
+    {
+      "fm_id": "FM03",
+      "name": "Shaft misalignment (coupling)",
+      "match_score": 0.17,
+      "likelihood": 0.004,
+      "support": 0.247,
+      "explained": 0.61,
+      "unexplained": [
+        "thrust_brg_temp"
+      ]
+    },
+    {
+      "fm_id": "FM02",
+      "name": "Lube oil cooler fouling / high oil temperature",
+      "match_score": 0.06,
+      "likelihood": 0.0,
+      "support": 0.118,
+      "explained": 0.39,
+      "unexplained": [
+        "axial_disp"
+      ]
+    },
+    {
+      "fm_id": "FM01",
+      "name": "Journal bearing wear (DE)",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "axial_disp",
+        "thrust_brg_temp"
+      ]
+    },
+    {
+      "fm_id": "FM04",
+      "name": "Rotor imbalance (deposit build-up or loss of material)",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "axial_disp",
+        "thrust_brg_temp"
+      ]
+    },
+    {
+      "fm_id": "FM05",
+      "name": "Impeller / aerodynamic fouling",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "axial_disp",
+        "thrust_brg_temp"
+      ]
+    },
+    {
+      "fm_id": "FM06",
+      "name": "Dry gas seal degradation",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "axial_disp",
+        "thrust_brg_temp"
+      ]
+    },
+    {
+      "fm_id": "FM08",
+      "name": "Anti-surge (recycle) valve passing",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "axial_disp",
+        "thrust_brg_temp"
+      ]
+    },
+    {
+      "fm_id": "FM09",
+      "name": "Suction strainer / filter blockage",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "axial_disp",
+        "thrust_brg_temp"
+      ]
+    }
+  ],
+  "diagnosis": {
+    "fm_id": "FM07",
+    "name": "Thrust bearing wear",
+    "component": "Thrust bearing",
+    "match_score": 0.667,
+    "likelihood": 0.996,
+    "severity": 9,
+    "pf_interval_days": 21,
+    "iso14224_failure_mode": "OHE - Overheating",
+    "mechanism": "2.4 Wear",
+    "likely_causes": [
+      "Excessive thrust load from balance piston seal wear or process upsets",
+      "Liquid slugging or surge events",
+      "Lube oil contamination"
+    ],
+    "evidence": [
+      {
+        "sensor": "axial_disp",
+        "label": "Axial displacement",
+        "expected": "up",
+        "weight": 1.0,
+        "z": 18.5,
+        "verdict": "supports"
+      },
+      {
+        "sensor": "thrust_brg_temp",
+        "label": "Thrust bearing temp",
+        "expected": "up",
+        "weight": 1.0,
+        "z": 6.0,
+        "verdict": "supports"
+      },
+      {
+        "sensor": "vib_de",
+        "label": "Radial vibration DE",
+        "expected": "up",
+        "weight": 0.2,
+        "z": 3.0,
+        "verdict": "not seen"
+      }
+    ],
+    "unexplained": []
+  },
+  "ambiguous": false,
+  "discriminating_checks": [],
+  "history": {
+    "count": 0,
+    "coded": 0,
+    "found_by_text_only": 0,
+    "total_cost_usd": 0.0,
+    "total_downtime_h": 0.0,
+    "wo_ids": [],
+    "dates": [],
+    "bad_actor": false
+  },
+  "similar_work_orders": [
+    {
+      "wo_id": "WO400179",
+      "date": "2024-09-22",
+      "equipment": "K-102",
+      "short_text": "Axial displacement alarm",
+      "long_text": "Axial position trending towards alarm. Thrust bearing wear found, pads replaced.",
+      "cost_usd": 105700.0,
+      "downtime_h": 38.4,
+      "similarity": 0.306
+    },
+    {
+      "wo_id": "WO400199",
+      "date": "2025-06-19",
+      "equipment": "K-101",
+      "short_text": "DE brg high vib + temp",
+      "long_text": "DE journal bearing vibration trending up, bearing temp high. Bearing replaced, babbitt wiped, oil sample showed high particle count.",
+      "cost_usd": 50500.0,
+      "downtime_h": 43.0,
+      "similarity": 0.14
+    },
+    {
+      "wo_id": "WO400162",
+      "date": "2024-02-02",
+      "equipment": "K-101",
+      "short_text": "K brg DE replaced",
+      "long_text": "Radial bearing DE found worn on inspection, clearance above OEM limit. New pads fitted. Lube oil changed.",
+      "cost_usd": 44700.0,
+      "downtime_h": 35.6,
+      "similarity": 0.103
+    },
+    {
+      "wo_id": "WO400156",
+      "date": "2023-12-12",
+      "equipment": "K-201",
+      "short_text": "High vibration drive end",
+      "long_text": "Vibration alarm DE probes. Shaft centreline shift. Bearing pads scored - replaced. Recommend oil cleanliness review.",
+      "cost_usd": 55200.0,
+      "downtime_h": 38.8,
+      "similarity": 0.101
+    }
+  ],
+  "forecast": [
+    {
+      "sensor": "axial_disp",
+      "label": "Axial displacement",
+      "unit": "mm",
+      "normal": 0.1,
+      "now": 0.14,
+      "alarm": 0.4,
+      "trip": 0.6,
+      "days_to_alarm": 10.7,
+      "days_to_trip": 15.7
+    },
+    {
+      "sensor": "thrust_brg_temp",
+      "label": "Thrust bearing temp",
+      "unit": "degC",
+      "normal": 88.0,
+      "now": 90.57,
+      "alarm": 115.0,
+      "trip": 125.0,
+      "days_to_alarm": 17.3,
+      "days_to_trip": 21.8
+    }
+  ],
+  "days_to_trip": 15.7,
+  "priority": {
+    "level": 2,
+    "label": "Urgent",
+    "window": "act within 7 days",
+    "rule_inputs": {
+      "severity": 9,
+      "days_to_trip": 15.7,
+      "criticality": "A",
+      "confidence": 0.67
+    }
+  },
+  "economics": {
+    "repair_cost_usd": 105700.0,
+    "outage_h": 38.4,
+    "unplanned_cost_usd": 1939000.0,
+    "planned_cost_usd": 490000.0,
+    "value_of_acting_now_usd": 1450000.0,
+    "basis": "Illustrative: unplanned = 2x repair + 1.8x outage at full production loss; planned = 1x repair + 40% of outage production loss."
+  },
+  "actions": {
+    "confirm": [
+      "Axial position trend vs thrust pad temperatures (active vs inactive side)",
+      "Balance line differential pressure / flow",
+      "Event log - surge or liquid ingestion events before onset"
+    ],
+    "immediate": [
+      "Review recent surge events and anti-surge controller behaviour",
+      "Increase monitoring; confirm axial position probes are healthy"
+    ],
+    "corrective": [
+      "Plan thrust bearing inspection; check balance piston labyrinth clearance"
+    ],
+    "defect_elimination": [
+      "Anti-surge controller tuning review",
+      "Balance piston seal condition monitoring via balance line DP"
+    ]
+  },
+  "notification": {
+    "notification_type": "M2 - Malfunction report",
+    "functional_location": "GP-01-COMP-K101",
+    "equipment": "K-101",
+    "priority": "2 - Urgent",
+    "short_text": "K-101 suspected Thrust bearing wear",
+    "damage_code": "WEAR",
+    "cause_code": "OPER",
+    "iso14224_failure_mode": "OHE - Overheating",
+    "long_text": "Condition-monitoring alert 11-Oct-2026 20:50. Suspected Thrust bearing wear (match 67%). Evidence: Axial displacement 0.14 mm (normal 0.1), Thrust bearing temp 90.57 degC (normal 88.0). Predicted trip in 15.7 days. Recommended: Review recent surge events and anti-surge controller behaviour; Plan thrust bearing inspection; check balance piston labyrinth clearance.",
+    "status": "DRAFT - requires engineer approval"
+  },
+  "summary": "K-101 Export Gas Compressor: suspected **Thrust bearing wear** (match 67%, likelihood 100% among 9 failure modes). Evidence: Axial displacement up (+18 sigma); Thrust bearing temp up (+6 sigma). At the current trend the machine reaches a trip limit in about 16 days. Priority **P2 Urgent** (act within 7 days). Planned intervention avoids roughly USD 1,450,000 versus run-to-failure (illustrative). First action: Review recent surge events and anti-surge controller behaviour.",
+  "approval": "PENDING ENGINEER REVIEW",
+  "trace": [
+    {
+      "step": "1 Check",
+      "tool": "detect.first_alert",
+      "result": "Persistent anomaly since 11-Oct 20:50 on axial_disp."
+    },
+    {
+      "step": "2 Diagnose",
+      "tool": "diagnose.diagnose",
+      "result": "FM07 Thrust bearing wear: 100% | FM03 Shaft misalignment (coupling): 0% | FM02 Lube oil cooler fouling / high oil temperature: 0%"
+    },
+    {
+      "step": "3 Doubt",
+      "tool": "ambiguity check",
+      "result": "Clear leader (99% ahead of next hypothesis)."
+    },
+    {
+      "step": "4 Recall",
+      "tool": "history.similar_work_orders + recurrence",
+      "result": "4 similar past jobs across fleet; 0 on K-101 in 36 months."
+    },
+    {
+      "step": "5 Forecast",
+      "tool": "detect.time_to_limit",
+      "result": "Earliest predicted trip in 15.7 days."
+    },
+    {
+      "step": "6 Decide",
+      "tool": "priority rules",
+      "result": "P2 Urgent - act within 7 days."
+    },
+    {
+      "step": "7 Value",
+      "tool": "economics",
+      "result": "Acting now avoids ~USD 1,450,000 (illustrative)."
+    },
+    {
+      "step": "8 Prescribe",
+      "tool": "FMEA actions",
+      "result": "8 actions across 4 horizons."
+    },
+    {
+      "step": "9 Draft",
+      "tool": "CMMS notification",
+      "result": "Draft M2 notification prepared (not submitted)."
+    },
+    {
+      "step": "10 Hand over",
+      "tool": "narrative",
+      "result": "Summary written. Awaiting engineer approval - nothing executed."
+    }
+  ]
+}

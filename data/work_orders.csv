@@ -1,0 +1,133 @@
+wo_id,date,equipment,notif_type,short_text,long_text,damage_code,cause_code,fm_id_coded,fm_id_true,downtime_h,cost_usd
+WO400100,2021-11-05,K-102,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1700.0
+WO400101,2021-11-06,K-201,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1800.0
+WO400102,2021-11-10,K-101,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1500.0
+WO400103,2021-12-18,K-102,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1300.0
+WO400104,2021-12-18,K-201,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1200.0
+WO400105,2021-12-22,K-101,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,2100.0
+WO400106,2022-02-05,K-101,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1800.0
+WO400107,2022-02-07,K-102,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1400.0
+WO400108,2022-02-08,K-201,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1700.0
+WO400109,2022-03-14,K-101,M2,Seal gas leak NDE,"Dry gas seal leakage NDE, faces damaged by liquids in seal gas. Seal replaced, heater repaired.",,,,FM06,72.4,163400.0
+WO400110,2022-03-17,K-102,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1600.0
+WO400111,2022-03-24,K-101,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1200.0
+WO400112,2022-03-24,K-201,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,2000.0
+WO400113,2022-05-01,K-201,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1600.0
+WO400114,2022-05-05,K-101,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,2000.0
+WO400115,2022-05-08,K-102,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1700.0
+WO400116,2022-06-19,K-201,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1400.0
+WO400117,2022-06-20,K-102,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1500.0
+WO400118,2022-06-21,K-101,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1100.0
+WO400119,2022-07-30,K-102,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,2000.0
+WO400120,2022-08-06,K-101,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1600.0
+WO400121,2022-08-07,K-201,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1400.0
+WO400122,2022-09-12,K-102,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1100.0
+WO400123,2022-09-14,K-101,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1400.0
+WO400124,2022-09-20,K-201,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1200.0
+WO400125,2022-10-27,K-101,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,2100.0
+WO400126,2022-10-31,K-102,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1500.0
+WO400127,2022-11-03,K-201,M2,Performance degradation,Head and efficiency loss trend. Fouling confirmed at inspection. Improve inlet separator.,FOUL,PROC,FM05,FM05,29.4,28200.0
+WO400128,2022-11-03,K-201,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1800.0
+WO400129,2022-12-11,K-102,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1400.0
+WO400130,2022-12-14,K-101,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1900.0
+WO400131,2022-12-17,K-201,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,2000.0
+WO400132,2023-01-25,K-201,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,2000.0
+WO400133,2023-01-26,K-102,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1100.0
+WO400134,2023-01-27,K-101,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1900.0
+WO400135,2023-03-16,K-102,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1200.0
+WO400136,2023-03-18,K-201,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1900.0
+WO400137,2023-03-19,K-101,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1100.0
+WO400138,2023-04-29,K-201,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1900.0
+WO400139,2023-05-04,K-101,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1600.0
+WO400140,2023-05-04,K-102,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1300.0
+WO400141,2023-05-11,K-102,M2,Realign motor-compressor,Alignment correction after baseplate settlement. Soft foot found at NDE motor foot.,,,,FM03,22.0,20600.0
+WO400142,2023-06-09,K-101,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,2000.0
+WO400143,2023-06-09,K-201,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1700.0
+WO400144,2023-06-13,K-102,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1300.0
+WO400145,2023-07-26,K-201,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,2000.0
+WO400146,2023-07-28,K-101,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,2100.0
+WO400147,2023-08-01,K-102,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1600.0
+WO400148,2023-08-30,K-101,M2,LO cooler cleaning,"Fin fan lube oil cooler dirty, approach temp high. Cleaned and TCV checked.",FOUL,HEAT,FM02,FM02,6.9,8900.0
+WO400149,2023-09-12,K-201,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1500.0
+WO400150,2023-09-15,K-101,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1500.0
+WO400151,2023-09-16,K-102,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,2000.0
+WO400152,2023-10-23,K-101,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1500.0
+WO400153,2023-10-29,K-201,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1600.0
+WO400154,2023-10-30,K-102,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1300.0
+WO400155,2023-12-11,K-201,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1900.0
+WO400156,2023-12-12,K-201,M2,High vibration drive end,Vibration alarm DE probes. Shaft centreline shift. Bearing pads scored - replaced. Recommend oil cleanliness review.,WEAR,LUBE,FM01,FM01,38.8,55200.0
+WO400157,2023-12-12,K-102,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1400.0
+WO400158,2023-12-13,K-101,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1300.0
+WO400159,2024-01-21,K-101,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1100.0
+WO400160,2024-01-24,K-102,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,2000.0
+WO400161,2024-01-26,K-201,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1900.0
+WO400162,2024-02-02,K-101,M2,K brg DE replaced,"Radial bearing DE found worn on inspection, clearance above OEM limit. New pads fitted. Lube oil changed.",WEAR,LUBE,FM01,FM01,35.6,44700.0
+WO400163,2024-03-09,K-101,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1700.0
+WO400164,2024-03-10,K-102,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,2100.0
+WO400165,2024-03-13,K-201,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1500.0
+WO400166,2024-04-17,K-201,M2,Suction strainer DP high,"Suction pressure low, strainer blocked with scale. Element cleaned.",BLOC,PROC,FM09,FM09,3.2,3700.0
+WO400167,2024-04-21,K-102,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1500.0
+WO400168,2024-04-25,K-201,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1900.0
+WO400169,2024-04-27,K-101,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1800.0
+WO400170,2024-06-06,K-101,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,2000.0
+WO400171,2024-06-06,K-201,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1900.0
+WO400172,2024-06-07,K-102,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1600.0
+WO400173,2024-07-21,K-101,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,2000.0
+WO400174,2024-07-21,K-102,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1100.0
+WO400175,2024-07-24,K-201,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1100.0
+WO400176,2024-09-03,K-101,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1300.0
+WO400177,2024-09-03,K-102,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1200.0
+WO400178,2024-09-06,K-201,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1100.0
+WO400179,2024-09-22,K-102,M2,Axial displacement alarm,"Axial position trending towards alarm. Thrust bearing wear found, pads replaced.",WEAR,OPER,FM07,FM07,38.4,105700.0
+WO400180,2024-10-17,K-201,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1400.0
+WO400181,2024-10-23,K-101,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,2000.0
+WO400182,2024-10-25,K-102,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1900.0
+WO400183,2024-11-30,K-102,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1700.0
+WO400184,2024-11-30,K-201,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1300.0
+WO400185,2024-12-02,K-101,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1700.0
+WO400186,2025-01-09,K-102,M2,Rotor 1x vib high,"1x vibration high both ends after scrubber upset. Rotor removed, deposits found on impellers, cleaned and balanced.",IMBL,PROC,FM04,FM04,61.3,77900.0
+WO400187,2025-01-14,K-102,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1100.0
+WO400188,2025-01-20,K-201,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1400.0
+WO400189,2025-01-23,K-101,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1200.0
+WO400190,2025-03-01,K-102,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1900.0
+WO400191,2025-03-03,K-201,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1400.0
+WO400192,2025-03-04,K-101,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1900.0
+WO400193,2025-04-18,K-101,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1200.0
+WO400194,2025-04-19,K-201,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,2000.0
+WO400195,2025-04-23,K-102,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1300.0
+WO400196,2025-06-01,K-201,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1700.0
+WO400197,2025-06-03,K-101,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1700.0
+WO400198,2025-06-04,K-102,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1700.0
+WO400199,2025-06-19,K-101,M2,DE brg high vib + temp,"DE journal bearing vibration trending up, bearing temp high. Bearing replaced, babbitt wiped, oil sample showed high particle count.",WEAR,LUBE,FM01,FM01,43.0,50500.0
+WO400200,2025-07-15,K-201,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1800.0
+WO400201,2025-07-18,K-101,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,2000.0
+WO400202,2025-07-21,K-102,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1200.0
+WO400203,2025-08-28,K-201,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1100.0
+WO400204,2025-08-29,K-102,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1300.0
+WO400205,2025-09-01,K-101,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1600.0
+WO400206,2025-10-05,K-201,M2,Recycle valve leak-by,"Anti-surge valve leak by, power high for throughput. Seat lapped.",LEAK,WEAR,FM08,FM08,6.8,15300.0
+WO400207,2025-10-14,K-201,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1700.0
+WO400208,2025-10-16,K-101,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1400.0
+WO400209,2025-10-18,K-102,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1200.0
+WO400210,2025-11-28,K-102,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1900.0
+WO400211,2025-12-03,K-201,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1400.0
+WO400212,2025-12-04,K-101,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1600.0
+WO400213,2026-01-13,K-102,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1300.0
+WO400214,2026-01-13,K-201,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1400.0
+WO400215,2026-01-17,K-101,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1500.0
+WO400216,2026-02-23,K-102,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1800.0
+WO400217,2026-02-26,K-201,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1700.0
+WO400218,2026-03-02,K-101,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1100.0
+WO400219,2026-03-03,K-102,M2,DGS primary vent high,"Primary vent flow increasing, seal gas DP dropping. DGS cartridge replaced. Seal gas filter found bypassed.",LEAK,CONT,FM06,FM06,46.7,95200.0
+WO400220,2026-04-14,K-201,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1100.0
+WO400221,2026-04-15,K-102,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,2000.0
+WO400222,2026-04-16,K-101,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1400.0
+WO400223,2026-05-30,K-101,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1900.0
+WO400224,2026-06-01,K-102,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1200.0
+WO400225,2026-06-02,K-201,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1500.0
+WO400226,2026-07-11,K-101,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1400.0
+WO400227,2026-07-11,K-201,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1800.0
+WO400228,2026-07-14,K-102,M1,PM - vibration route,Monthly vibration and thermography route. No issues.,,,,,0.0,1800.0
+WO400229,2026-08-23,K-102,M1,PM - lube oil sample,Routine 3-monthly oil sample. Results normal.,,,,,0.0,1900.0
+WO400230,2026-08-27,K-201,M1,Instrument calibration,Calibrated PT/TT loops on compressor skid.,,,,,0.0,1800.0
+WO400231,2026-08-31,K-101,M1,PM - DGS filter change,Seal gas filter elements changed per schedule.,,,,,0.0,1400.0

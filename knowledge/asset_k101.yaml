@@ -1,0 +1,34 @@
+# Asset definition for the demo compressor.
+# All values are illustrative and typical of a motor-driven centrifugal gas compressor.
+# They are NOT taken from any operator's data.
+
+asset:
+  tag: K-101
+  name: Export Gas Compressor
+  type: Centrifugal compressor (motor-driven, VSD), dry gas seals, tilting-pad bearings
+  functional_location: GP-01-COMP-K101
+  criticality: A          # A = production/safety critical, no installed spare
+  spared: false
+  production_impact_per_day_usd: 600000    # illustrative, deliberately conservative lost-production value if tripped
+
+# Each sensor: normal operating value, noise (std dev), unit, and alarm / trip limits.
+# direction: "high" means the limit is a maximum; "low" means a minimum.
+sensors:
+  suction_pressure:   {label: Suction pressure,        unit: barg,   normal: 30.0,  noise: 0.30,  alarm: 26.0,  trip: 24.0,  direction: low}
+  discharge_pressure: {label: Discharge pressure,      unit: barg,   normal: 75.0,  noise: 0.60,  alarm: null,  trip: null,  direction: high}
+  suction_temp:       {label: Suction temperature,     unit: degC,   normal: 40.0,  noise: 0.50,  alarm: 55.0,  trip: 60.0,  direction: high}
+  discharge_temp:     {label: Discharge temperature,   unit: degC,   normal: 135.0, noise: 1.00,  alarm: 150.0, trip: 160.0, direction: high}
+  flow:               {label: Export gas flow,         unit: kNm3/h, normal: 250.0, noise: 3.00,  alarm: null,  trip: null,  direction: low}
+  speed:              {label: Shaft speed,             unit: rpm,    normal: 10500, noise: 15.0,  alarm: null,  trip: null,  direction: high}
+  power:              {label: Motor power,             unit: kW,     normal: 12000, noise: 120.0, alarm: 13500, trip: 14000, direction: high}
+  polytropic_eff:     {label: Polytropic efficiency,   unit: "%",    normal: 80.0,  noise: 0.40,  alarm: 75.0,  trip: null,  direction: low}
+  vib_de:             {label: Radial vibration DE,     unit: um,     normal: 18.0,  noise: 1.00,  alarm: 50.0,  trip: 75.0,  direction: high}
+  vib_nde:            {label: Radial vibration NDE,    unit: um,     normal: 15.0,  noise: 1.00,  alarm: 50.0,  trip: 75.0,  direction: high}
+  axial_disp:         {label: Axial displacement,      unit: mm,     normal: 0.10,  noise: 0.010, alarm: 0.40,  trip: 0.60,  direction: high}
+  brg_temp_de:        {label: Journal bearing temp DE, unit: degC,   normal: 85.0,  noise: 0.60,  alarm: 110.0, trip: 120.0, direction: high}
+  brg_temp_nde:       {label: Journal bearing temp NDE,unit: degC,   normal: 82.0,  noise: 0.60,  alarm: 110.0, trip: 120.0, direction: high}
+  thrust_brg_temp:    {label: Thrust bearing temp,     unit: degC,   normal: 88.0,  noise: 0.60,  alarm: 115.0, trip: 125.0, direction: high}
+  lube_oil_temp:      {label: Lube oil supply temp,    unit: degC,   normal: 48.0,  noise: 0.40,  alarm: 60.0,  trip: 66.0,  direction: high}
+  lube_oil_press:     {label: Lube oil supply press,   unit: barg,   normal: 2.50,  noise: 0.030, alarm: 1.8,   trip: 1.4,   direction: low}
+  seal_gas_dp:        {label: Seal gas diff. pressure, unit: bar,    normal: 3.00,  noise: 0.050, alarm: 2.0,   trip: 1.5,   direction: low}
+  primary_vent_flow:  {label: DGS primary vent flow,   unit: Nm3/h,  normal: 2.00,  noise: 0.10,  alarm: 6.0,   trip: 10.0,  direction: high}

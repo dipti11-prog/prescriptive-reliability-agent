@@ -1,0 +1,346 @@
+{
+  "status": "alert",
+  "asset": {
+    "tag": "K-101",
+    "name": "Export Gas Compressor",
+    "type": "Centrifugal compressor (motor-driven, VSD), dry gas seals, tilting-pad bearings",
+    "functional_location": "GP-01-COMP-K101",
+    "criticality": "A",
+    "spared": false,
+    "production_impact_per_day_usd": 600000
+  },
+  "analysis_time": "2026-10-14 09:50:00",
+  "alert_time": "2026-10-11 09:50:00",
+  "triggered_sensors": [
+    "primary_vent_flow"
+  ],
+  "hypotheses": [
+    {
+      "fm_id": "FM06",
+      "name": "Dry gas seal degradation",
+      "match_score": 0.791,
+      "likelihood": 1.0,
+      "support": 0.813,
+      "explained": 0.966,
+      "unexplained": [
+        "vib_de",
+        "brg_temp_de"
+      ]
+    },
+    {
+      "fm_id": "FM02",
+      "name": "Lube oil cooler fouling / high oil temperature",
+      "match_score": 0.001,
+      "likelihood": 0.0,
+      "support": 0.005,
+      "explained": 0.016,
+      "unexplained": [
+        "primary_vent_flow",
+        "seal_gas_dp",
+        "vib_de"
+      ]
+    },
+    {
+      "fm_id": "FM01",
+      "name": "Journal bearing wear (DE)",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.016,
+      "unexplained": [
+        "primary_vent_flow",
+        "seal_gas_dp"
+      ]
+    },
+    {
+      "fm_id": "FM03",
+      "name": "Shaft misalignment (coupling)",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.016,
+      "unexplained": [
+        "primary_vent_flow",
+        "seal_gas_dp"
+      ]
+    },
+    {
+      "fm_id": "FM04",
+      "name": "Rotor imbalance (deposit build-up or loss of material)",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "primary_vent_flow",
+        "seal_gas_dp",
+        "brg_temp_de"
+      ]
+    },
+    {
+      "fm_id": "FM05",
+      "name": "Impeller / aerodynamic fouling",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "primary_vent_flow",
+        "seal_gas_dp",
+        "vib_de",
+        "brg_temp_de"
+      ]
+    },
+    {
+      "fm_id": "FM07",
+      "name": "Thrust bearing wear",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "primary_vent_flow",
+        "seal_gas_dp",
+        "brg_temp_de"
+      ]
+    },
+    {
+      "fm_id": "FM08",
+      "name": "Anti-surge (recycle) valve passing",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "primary_vent_flow",
+        "seal_gas_dp",
+        "vib_de",
+        "brg_temp_de"
+      ]
+    },
+    {
+      "fm_id": "FM09",
+      "name": "Suction strainer / filter blockage",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "primary_vent_flow",
+        "seal_gas_dp",
+        "vib_de",
+        "brg_temp_de"
+      ]
+    }
+  ],
+  "diagnosis": {
+    "fm_id": "FM06",
+    "name": "Dry gas seal degradation",
+    "component": "Dry gas seal (primary stage)",
+    "match_score": 0.791,
+    "likelihood": 1.0,
+    "severity": 9,
+    "pf_interval_days": 21,
+    "iso14224_failure_mode": "ELP - External leakage, process medium",
+    "mechanism": "1.1 Leakage",
+    "likely_causes": [
+      "Contaminated or wet seal gas (liquids, particles) damaging seal faces",
+      "Seal gas filter differential pressure high / filter bypass",
+      "Reverse pressurisation or slow-roll operation"
+    ],
+    "evidence": [
+      {
+        "sensor": "primary_vent_flow",
+        "label": "DGS primary vent flow",
+        "expected": "up",
+        "weight": 1.0,
+        "z": 25.0,
+        "verdict": "supports"
+      },
+      {
+        "sensor": "seal_gas_dp",
+        "label": "Seal gas diff. pressure",
+        "expected": "down",
+        "weight": 1.0,
+        "z": -8.4,
+        "verdict": "supports"
+      }
+    ],
+    "unexplained": [
+      "vib_de",
+      "brg_temp_de"
+    ]
+  },
+  "ambiguous": false,
+  "discriminating_checks": [],
+  "history": {
+    "count": 0,
+    "coded": 0,
+    "found_by_text_only": 0,
+    "total_cost_usd": 0.0,
+    "total_downtime_h": 0.0,
+    "wo_ids": [],
+    "dates": [],
+    "bad_actor": false
+  },
+  "similar_work_orders": [
+    {
+      "wo_id": "WO400219",
+      "date": "2026-03-03",
+      "equipment": "K-102",
+      "short_text": "DGS primary vent high",
+      "long_text": "Primary vent flow increasing, seal gas DP dropping. DGS cartridge replaced. Seal gas filter found bypassed.",
+      "cost_usd": 95200.0,
+      "downtime_h": 46.7,
+      "similarity": 0.489
+    },
+    {
+      "wo_id": "WO400109",
+      "date": "2022-03-14",
+      "equipment": "K-101",
+      "short_text": "Seal gas leak NDE",
+      "long_text": "Dry gas seal leakage NDE, faces damaged by liquids in seal gas. Seal replaced, heater repaired.",
+      "cost_usd": 163400.0,
+      "downtime_h": 72.4,
+      "similarity": 0.188
+    },
+    {
+      "wo_id": "WO400166",
+      "date": "2024-04-17",
+      "equipment": "K-201",
+      "short_text": "Suction strainer DP high",
+      "long_text": "Suction pressure low, strainer blocked with scale. Element cleaned.",
+      "cost_usd": 3700.0,
+      "downtime_h": 3.2,
+      "similarity": 0.123
+    }
+  ],
+  "forecast": [
+    {
+      "sensor": "primary_vent_flow",
+      "label": "DGS primary vent flow",
+      "unit": "Nm3/h",
+      "normal": 2.0,
+      "now": 2.63,
+      "alarm": 6.0,
+      "trip": 10.0,
+      "days_to_alarm": 9.5,
+      "days_to_trip": 16.1
+    },
+    {
+      "sensor": "seal_gas_dp",
+      "label": "Seal gas diff. pressure",
+      "unit": "bar",
+      "normal": 3.0,
+      "now": 2.9,
+      "alarm": 2.0,
+      "trip": 1.5,
+      "days_to_alarm": 11.8,
+      "days_to_trip": 15.5
+    }
+  ],
+  "days_to_trip": 15.5,
+  "priority": {
+    "level": 2,
+    "label": "Urgent",
+    "window": "act within 7 days",
+    "rule_inputs": {
+      "severity": 9,
+      "days_to_trip": 15.5,
+      "criticality": "A",
+      "confidence": 0.79
+    }
+  },
+  "economics": {
+    "repair_cost_usd": 95200.0,
+    "outage_h": 46.7,
+    "unplanned_cost_usd": 2292000.0,
+    "planned_cost_usd": 562000.0,
+    "value_of_acting_now_usd": 1730000.0,
+    "basis": "Illustrative: unplanned = 2x repair + 1.8x outage at full production loss; planned = 1x repair + 40% of outage production loss."
+  },
+  "actions": {
+    "confirm": [
+      "Primary vent flow trend and step changes",
+      "Seal gas filter differential pressure and conditioning skid heater status",
+      "Secondary vent flow - rising too suggests progression to outer seal"
+    ],
+    "immediate": [
+      "Check seal gas supply, filter DP and seal gas heater",
+      "Increase frequency of vent flow review; prepare for controlled shutdown if trip limit approached"
+    ],
+    "corrective": [
+      "Plan seal cartridge replacement - long lead item, check spares availability now"
+    ],
+    "defect_elimination": [
+      "Seal gas conditioning review (dew point margin, filtration)",
+      "Add seal gas quality monitoring"
+    ]
+  },
+  "notification": {
+    "notification_type": "M2 - Malfunction report",
+    "functional_location": "GP-01-COMP-K101",
+    "equipment": "K-101",
+    "priority": "2 - Urgent",
+    "short_text": "K-101 suspected Dry gas seal degradation",
+    "damage_code": "LEAK",
+    "cause_code": "CONT",
+    "iso14224_failure_mode": "ELP - External leakage, process medium",
+    "long_text": "Condition-monitoring alert 11-Oct-2026 09:50. Suspected Dry gas seal degradation (match 79%). Evidence: DGS primary vent flow 2.63 Nm3/h (normal 2.0), Seal gas diff. pressure 2.9 bar (normal 3.0). Predicted trip in 15.5 days. Recommended: Check seal gas supply, filter DP and seal gas heater; Plan seal cartridge replacement - long lead item, check spares availability now.",
+    "status": "DRAFT - requires engineer approval"
+  },
+  "summary": "K-101 Export Gas Compressor: suspected **Dry gas seal degradation** (match 79%, likelihood 100% among 9 failure modes). Evidence: DGS primary vent flow up (+25 sigma); Seal gas diff. pressure down (-8 sigma). At the current trend the machine reaches a trip limit in about 16 days. Priority **P2 Urgent** (act within 7 days). Planned intervention avoids roughly USD 1,730,000 versus run-to-failure (illustrative). First action: Check seal gas supply, filter DP and seal gas heater.",
+  "approval": "PENDING ENGINEER REVIEW",
+  "trace": [
+    {
+      "step": "1 Check",
+      "tool": "detect.first_alert",
+      "result": "Persistent anomaly since 11-Oct 09:50 on primary_vent_flow."
+    },
+    {
+      "step": "2 Diagnose",
+      "tool": "diagnose.diagnose",
+      "result": "FM06 Dry gas seal degradation: 100% | FM02 Lube oil cooler fouling / high oil temperature: 0% | FM01 Journal bearing wear (DE): 0%"
+    },
+    {
+      "step": "3 Doubt",
+      "tool": "ambiguity check",
+      "result": "Clear leader (100% ahead of next hypothesis)."
+    },
+    {
+      "step": "4 Recall",
+      "tool": "history.similar_work_orders + recurrence",
+      "result": "3 similar past jobs across fleet; 0 on K-101 in 36 months."
+    },
+    {
+      "step": "5 Forecast",
+      "tool": "detect.time_to_limit",
+      "result": "Earliest predicted trip in 15.5 days."
+    },
+    {
+      "step": "6 Decide",
+      "tool": "priority rules",
+      "result": "P2 Urgent - act within 7 days."
+    },
+    {
+      "step": "7 Value",
+      "tool": "economics",
+      "result": "Acting now avoids ~USD 1,730,000 (illustrative)."
+    },
+    {
+      "step": "8 Prescribe",
+      "tool": "FMEA actions",
+      "result": "8 actions across 4 horizons."
+    },
+    {
+      "step": "9 Draft",
+      "tool": "CMMS notification",
+      "result": "Draft M2 notification prepared (not submitted)."
+    },
+    {
+      "step": "10 Hand over",
+      "tool": "narrative",
+      "result": "Summary written. Awaiting engineer approval - nothing executed."
+    }
+  ]
+}

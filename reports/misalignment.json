@@ -1,0 +1,391 @@
+{
+  "status": "alert",
+  "asset": {
+    "tag": "K-101",
+    "name": "Export Gas Compressor",
+    "type": "Centrifugal compressor (motor-driven, VSD), dry gas seals, tilting-pad bearings",
+    "functional_location": "GP-01-COMP-K101",
+    "criticality": "A",
+    "spared": false,
+    "production_impact_per_day_usd": 600000
+  },
+  "analysis_time": "2026-10-15 16:50:00",
+  "alert_time": "2026-10-12 16:50:00",
+  "triggered_sensors": [
+    "vib_de"
+  ],
+  "hypotheses": [
+    {
+      "fm_id": "FM03",
+      "name": "Shaft misalignment (coupling)",
+      "match_score": 0.425,
+      "likelihood": 0.487,
+      "support": 0.425,
+      "explained": 1.0,
+      "unexplained": []
+    },
+    {
+      "fm_id": "FM04",
+      "name": "Rotor imbalance (deposit build-up or loss of material)",
+      "match_score": 0.39,
+      "likelihood": 0.346,
+      "support": 0.476,
+      "explained": 0.775,
+      "unexplained": [
+        "axial_disp"
+      ]
+    },
+    {
+      "fm_id": "FM01",
+      "name": "Journal bearing wear (DE)",
+      "match_score": 0.317,
+      "likelihood": 0.151,
+      "support": 0.387,
+      "explained": 0.775,
+      "unexplained": [
+        "axial_disp"
+      ]
+    },
+    {
+      "fm_id": "FM07",
+      "name": "Thrust bearing wear",
+      "match_score": 0.182,
+      "likelihood": 0.016,
+      "support": 0.218,
+      "explained": 0.794,
+      "unexplained": [
+        "vib_nde"
+      ]
+    },
+    {
+      "fm_id": "FM02",
+      "name": "Lube oil cooler fouling / high oil temperature",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "vib_de",
+        "axial_disp",
+        "vib_nde"
+      ]
+    },
+    {
+      "fm_id": "FM05",
+      "name": "Impeller / aerodynamic fouling",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "vib_de",
+        "axial_disp",
+        "vib_nde"
+      ]
+    },
+    {
+      "fm_id": "FM06",
+      "name": "Dry gas seal degradation",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "vib_de",
+        "axial_disp",
+        "vib_nde"
+      ]
+    },
+    {
+      "fm_id": "FM08",
+      "name": "Anti-surge (recycle) valve passing",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "vib_de",
+        "axial_disp",
+        "vib_nde"
+      ]
+    },
+    {
+      "fm_id": "FM09",
+      "name": "Suction strainer / filter blockage",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "vib_de",
+        "axial_disp",
+        "vib_nde"
+      ]
+    }
+  ],
+  "diagnosis": {
+    "fm_id": "FM03",
+    "name": "Shaft misalignment (coupling)",
+    "component": "Coupling / driver-compressor alignment",
+    "match_score": 0.425,
+    "likelihood": 0.487,
+    "severity": 7,
+    "pf_interval_days": 60,
+    "iso14224_failure_mode": "VIB - Vibration",
+    "mechanism": "1.3 Clearance/alignment failure",
+    "likely_causes": [
+      "Thermal growth not allowed for in cold alignment",
+      "Foundation or baseplate settlement, soft foot",
+      "Pipe strain from suction/discharge piping"
+    ],
+    "evidence": [
+      {
+        "sensor": "vib_de",
+        "label": "Radial vibration DE",
+        "expected": "up",
+        "weight": 1.0,
+        "z": 20.7,
+        "verdict": "supports"
+      },
+      {
+        "sensor": "vib_nde",
+        "label": "Radial vibration NDE",
+        "expected": "up",
+        "weight": 0.6,
+        "z": 8.7,
+        "verdict": "supports"
+      },
+      {
+        "sensor": "axial_disp",
+        "label": "Axial displacement",
+        "expected": "up",
+        "weight": 0.8,
+        "z": 8.3,
+        "verdict": "supports"
+      },
+      {
+        "sensor": "brg_temp_de",
+        "label": "Journal bearing temp DE",
+        "expected": "up",
+        "weight": 0.5,
+        "z": 2.2,
+        "verdict": "not seen"
+      }
+    ],
+    "unexplained": []
+  },
+  "ambiguous": true,
+  "discriminating_checks": [
+    "[FM03 Shaft misalignment (coupling)] Vibration spectrum - strong 2x component and high axial vibration",
+    "[FM03 Shaft misalignment (coupling)] Phase across coupling ~180 degrees",
+    "[FM04 Rotor imbalance (deposit build-up or loss of material)] Vibration spectrum - dominant 1x at both bearings, similar magnitude",
+    "[FM04 Rotor imbalance (deposit build-up or loss of material)] 1x phase stable; amplitude changes with speed squared",
+    "[FM01 Journal bearing wear (DE)] Vibration spectrum on DE probes - rising 1x with sub-synchronous content suggests clearance growth",
+    "[FM01 Journal bearing wear (DE)] Shaft centreline plot - shift of journal position within bearing clearance"
+  ],
+  "history": {
+    "count": 0,
+    "coded": 0,
+    "found_by_text_only": 0,
+    "total_cost_usd": 0.0,
+    "total_downtime_h": 0.0,
+    "wo_ids": [],
+    "dates": [],
+    "bad_actor": false
+  },
+  "similar_work_orders": [
+    {
+      "wo_id": "WO400141",
+      "date": "2023-05-11",
+      "equipment": "K-102",
+      "short_text": "Realign motor-compressor",
+      "long_text": "Alignment correction after baseplate settlement. Soft foot found at NDE motor foot.",
+      "cost_usd": 20600.0,
+      "downtime_h": 22.0,
+      "similarity": 0.361
+    },
+    {
+      "wo_id": "WO400199",
+      "date": "2025-06-19",
+      "equipment": "K-101",
+      "short_text": "DE brg high vib + temp",
+      "long_text": "DE journal bearing vibration trending up, bearing temp high. Bearing replaced, babbitt wiped, oil sample showed high particle count.",
+      "cost_usd": 50500.0,
+      "downtime_h": 43.0,
+      "similarity": 0.162
+    },
+    {
+      "wo_id": "WO400156",
+      "date": "2023-12-12",
+      "equipment": "K-201",
+      "short_text": "High vibration drive end",
+      "long_text": "Vibration alarm DE probes. Shaft centreline shift. Bearing pads scored - replaced. Recommend oil cleanliness review.",
+      "cost_usd": 55200.0,
+      "downtime_h": 38.8,
+      "similarity": 0.16
+    },
+    {
+      "wo_id": "WO400109",
+      "date": "2022-03-14",
+      "equipment": "K-101",
+      "short_text": "Seal gas leak NDE",
+      "long_text": "Dry gas seal leakage NDE, faces damaged by liquids in seal gas. Seal replaced, heater repaired.",
+      "cost_usd": 163400.0,
+      "downtime_h": 72.4,
+      "similarity": 0.142
+    },
+    {
+      "wo_id": "WO400162",
+      "date": "2024-02-02",
+      "equipment": "K-101",
+      "short_text": "K brg DE replaced",
+      "long_text": "Radial bearing DE found worn on inspection, clearance above OEM limit. New pads fitted. Lube oil changed.",
+      "cost_usd": 44700.0,
+      "downtime_h": 35.6,
+      "similarity": 0.119
+    }
+  ],
+  "forecast": [
+    {
+      "sensor": "vib_de",
+      "label": "Radial vibration DE",
+      "unit": "um",
+      "normal": 18.0,
+      "now": 21.91,
+      "alarm": 50.0,
+      "trip": 75.0,
+      "days_to_alarm": 12.0,
+      "days_to_trip": 18.1
+    },
+    {
+      "sensor": "vib_nde",
+      "label": "Radial vibration NDE",
+      "unit": "um",
+      "normal": 15.0,
+      "now": 17.06,
+      "alarm": 50.0,
+      "trip": 75.0,
+      "days_to_alarm": 17.0,
+      "days_to_trip": 23.9
+    },
+    {
+      "sensor": "axial_disp",
+      "label": "Axial displacement",
+      "unit": "mm",
+      "normal": 0.1,
+      "now": 0.12,
+      "alarm": 0.4,
+      "trip": 0.6,
+      "days_to_alarm": 37.8,
+      "days_to_trip": 54.0
+    }
+  ],
+  "days_to_trip": 18.1,
+  "priority": {
+    "level": 3,
+    "label": "Planned",
+    "window": "schedule within 30 days",
+    "rule_inputs": {
+      "severity": 7,
+      "days_to_trip": 18.1,
+      "criticality": "A",
+      "confidence": 0.42
+    }
+  },
+  "economics": {
+    "repair_cost_usd": 20600.0,
+    "outage_h": 22.0,
+    "unplanned_cost_usd": 1031000.0,
+    "planned_cost_usd": 241000.0,
+    "value_of_acting_now_usd": 791000.0,
+    "basis": "Illustrative: unplanned = 2x repair + 1.8x outage at full production loss; planned = 1x repair + 40% of outage production loss."
+  },
+  "actions": {
+    "confirm": [
+      "[FM03 Shaft misalignment (coupling)] Vibration spectrum - strong 2x component and high axial vibration",
+      "[FM03 Shaft misalignment (coupling)] Phase across coupling ~180 degrees",
+      "[FM04 Rotor imbalance (deposit build-up or loss of material)] Vibration spectrum - dominant 1x at both bearings, similar magnitude",
+      "[FM04 Rotor imbalance (deposit build-up or loss of material)] 1x phase stable; amplitude changes with speed squared",
+      "[FM01 Journal bearing wear (DE)] Vibration spectrum on DE probes - rising 1x with sub-synchronous content suggests clearance growth",
+      "[FM01 Journal bearing wear (DE)] Shaft centreline plot - shift of journal position within bearing clearance"
+    ],
+    "immediate": [
+      "Trend 2x vibration component and axial position",
+      "Inspect coupling guard area for heat or abnormal noise"
+    ],
+    "corrective": [
+      "Hot alignment check and correction at next shutdown",
+      "Inspect coupling elements for wear or damage"
+    ],
+    "defect_elimination": [
+      "Verify thermal growth offsets in alignment procedure",
+      "Pipe strain check during next turnaround"
+    ]
+  },
+  "notification": {
+    "notification_type": "M2 - Malfunction report",
+    "functional_location": "GP-01-COMP-K101",
+    "equipment": "K-101",
+    "priority": "3 - Planned",
+    "short_text": "K-101 suspected Shaft misalignment (coup",
+    "damage_code": "MISA",
+    "cause_code": "INST",
+    "iso14224_failure_mode": "VIB - Vibration",
+    "long_text": "Condition-monitoring alert 12-Oct-2026 16:50. Suspected Shaft misalignment (coupling) (match 42%). Evidence: Radial vibration DE 21.91 um (normal 18.0), Radial vibration NDE 17.06 um (normal 15.0), Axial displacement 0.12 mm (normal 0.1). Predicted trip in 18.1 days. Recommended: Trend 2x vibration component and axial position; Hot alignment check and correction at next shutdown.",
+    "status": "DRAFT - requires engineer approval"
+  },
+  "summary": "K-101 Export Gas Compressor: suspected **Shaft misalignment (coupling)** (match 42%, likelihood 49% among 9 failure modes). Evidence: Radial vibration DE up (+21 sigma); Radial vibration NDE up (+9 sigma); Axial displacement up (+8 sigma). Diagnosis not yet conclusive - Rotor imbalance (deposit build-up or loss of material) is close behind. Run the discriminating checks first. At the current trend the machine reaches a trip limit in about 18 days. Priority **P3 Planned** (schedule within 30 days). Planned intervention avoids roughly USD 791,000 versus run-to-failure (illustrative). First action: [FM03 Shaft misalignment (coupling)] Vibration spectrum - strong 2x component and high axial vibration.",
+  "approval": "PENDING ENGINEER REVIEW",
+  "trace": [
+    {
+      "step": "1 Check",
+      "tool": "detect.first_alert",
+      "result": "Persistent anomaly since 12-Oct 16:50 on vib_de."
+    },
+    {
+      "step": "2 Diagnose",
+      "tool": "diagnose.diagnose",
+      "result": "FM03 Shaft misalignment (coupling): 49% | FM04 Rotor imbalance (deposit build-up or loss of material): 35% | FM01 Journal bearing wear (DE): 15%"
+    },
+    {
+      "step": "3 Doubt",
+      "tool": "ambiguity check",
+      "result": "Top hypotheses only 14% apart - recommending discriminating checks before committing."
+    },
+    {
+      "step": "4 Recall",
+      "tool": "history.similar_work_orders + recurrence",
+      "result": "5 similar past jobs across fleet; 0 on K-101 in 36 months."
+    },
+    {
+      "step": "5 Forecast",
+      "tool": "detect.time_to_limit",
+      "result": "Earliest predicted trip in 18.1 days."
+    },
+    {
+      "step": "6 Decide",
+      "tool": "priority rules",
+      "result": "P3 Planned - schedule within 30 days."
+    },
+    {
+      "step": "7 Value",
+      "tool": "economics",
+      "result": "Acting now avoids ~USD 791,000 (illustrative)."
+    },
+    {
+      "step": "8 Prescribe",
+      "tool": "FMEA actions",
+      "result": "12 actions across 4 horizons."
+    },
+    {
+      "step": "9 Draft",
+      "tool": "CMMS notification",
+      "result": "Draft M2 notification prepared (not submitted)."
+    },
+    {
+      "step": "10 Hand over",
+      "tool": "narrative",
+      "result": "Summary written. Awaiting engineer approval - nothing executed."
+    }
+  ]
+}

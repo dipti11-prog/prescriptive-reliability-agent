@@ -1,0 +1,103 @@
+# K-101 Export Gas Compressor - Prescriptive Reliability Assessment
+
+*Analysis time: 2026-10-17 10:40:00 | First alert: 2026-10-14 10:40:00 | Criticality A | Status: **PENDING ENGINEER REVIEW***
+
+## Summary
+
+K-101 Export Gas Compressor: suspected **Suction strainer / filter blockage** (match 44%, likelihood 100% among 9 failure modes). Evidence: Suction pressure down (-11 sigma). At the current trend the machine reaches a trip limit in about 22 days. Priority **P3 Planned** (schedule within 30 days). Planned intervention avoids roughly USD 116,000 versus run-to-failure (illustrative). First action: Check strainer DP; switch to standby strainer if available.
+
+## 1. Diagnosis
+
+**Suction strainer / filter blockage** - Suction strainer  
+ISO 14224 failure mode: LOO - Low output | Mechanism: 5.1 Blockage/plugged | Severity 6/10 | Typical P-F interval 30 days
+
+| Rank | Failure mode | Match | Likelihood | Unexplained symptoms |
+|---|---|---|---|---|
+| 1 | FM09 Suction strainer / filter blockage | 44% | 100% | - |
+| 2 | FM01 Journal bearing wear (DE) | 0% | 0% | suction_pressure |
+| 3 | FM02 Lube oil cooler fouling / high oil temperature | 0% | 0% | suction_pressure |
+| 4 | FM03 Shaft misalignment (coupling) | 0% | 0% | suction_pressure |
+| 5 | FM04 Rotor imbalance (deposit build-up or loss of material) | 0% | 0% | suction_pressure |
+
+**Evidence for the leading hypothesis**
+
+| Symptom | Expected | Observed (sigma) | Weight | Verdict |
+|---|---|---|---|---|
+| Suction pressure | down | -10.6 | 1.0 | supports |
+| Export gas flow | down | +0.5 | 0.8 | not seen |
+| Discharge temperature | up | +2.4 | 0.5 | not seen |
+
+**Likely causes:** Debris or corrosion products from upstream piping; Hydrates or wax deposition
+
+## 2. Time to act
+
+| Sensor | Normal | Now | Alarm | Trip | Days to alarm | Days to trip |
+|---|---|---|---|---|---|---|
+| Suction pressure (barg) | 30.0 | 29.31 | 26.0 | 24.0 | 16.1 | 22.3 |
+
+**Priority P3 - Planned: schedule within 30 days.**  
+Rule inputs: {'severity': 6, 'days_to_trip': 22.3, 'criticality': 'A', 'confidence': 0.43}
+
+## 3. Recommended actions
+
+**Confirm the diagnosis**
+- Strainer differential pressure (if instrumented)
+- Compare upstream header pressure with compressor suction pressure
+
+**Immediate (protect the machine)**
+- Check strainer DP; switch to standby strainer if available
+- Watch suction pressure vs low-pressure trip
+
+**Corrective (fix the defect)**
+- Clean or replace strainer element
+
+**Defect elimination (stop it coming back)**
+- Identify debris source; add strainer DP alarm if missing
+
+## 4. Maintenance history
+
+0 event(s) of this failure mode on K-101 in the last 36 months (0 coded, 0 found only by text search). 
+
+| WO | Date | Equipment | Text | Similarity |
+|---|---|---|---|---|
+| WO400166 | 2024-04-17 | K-201 | Suction strainer DP high - Suction pressure low, strainer blocked with scale. Element cleaned.... | 0.46 |
+
+## 5. Value of acting now (illustrative)
+
+- Run-to-failure: ~USD 151,000
+- Planned intervention: ~USD 36,000
+- **Avoided cost: ~USD 116,000**
+- Basis: Illustrative: unplanned = 2x repair + 1.8x outage at full production loss; planned = 1x repair + 40% of outage production loss.
+
+## 6. Draft CMMS notification
+
+| Field | Value |
+|---|---|
+| Notification Type | M2 - Malfunction report |
+| Functional Location | GP-01-COMP-K101 |
+| Equipment | K-101 |
+| Priority | 3 - Planned |
+| Short Text | K-101 suspected Suction strainer / filte |
+| Damage Code | BLOC |
+| Cause Code | PROC |
+| Iso14224 Failure Mode | LOO - Low output |
+| Long Text | Condition-monitoring alert 14-Oct-2026 10:40. Suspected Suction strainer / filter blockage (match 44%). Evidence: Suction pressure 29.31 barg (normal 30.0). Predicted trip in 22.3 days. Recommended: Check strainer DP; switch to standby strainer if available; Clean or replace strainer element. |
+| Status | DRAFT - requires engineer approval |
+
+## 7. Agent reasoning trace
+
+| Step | Tool | Result |
+|---|---|---|
+| 1 Check | `detect.first_alert` | Persistent anomaly since 14-Oct 10:40 on suction_pressure. |
+| 2 Diagnose | `diagnose.diagnose` | FM09 Suction strainer / filter blockage: 100% | FM01 Journal bearing wear (DE): 0% | FM02 Lube oil cooler fouling / high oil temperature: 0% |
+| 3 Doubt | `ambiguity check` | Clear leader (100% ahead of next hypothesis). |
+| 4 Recall | `history.similar_work_orders + recurrence` | 1 similar past jobs across fleet; 0 on K-101 in 36 months. |
+| 5 Forecast | `detect.time_to_limit` | Earliest predicted trip in 22.3 days. |
+| 6 Decide | `priority rules` | P3 Planned - schedule within 30 days. |
+| 7 Value | `economics` | Acting now avoids ~USD 116,000 (illustrative). |
+| 8 Prescribe | `FMEA actions` | 6 actions across 4 horizons. |
+| 9 Draft | `CMMS notification` | Draft M2 notification prepared (not submitted). |
+| 10 Hand over | `narrative` | Summary written. Awaiting engineer approval - nothing executed. |
+
+---
+*Generated by the Prescriptive Reliability Agent on synthetic data. Recommendations require approval by a competent engineer.*

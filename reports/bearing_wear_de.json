@@ -1,0 +1,379 @@
+{
+  "status": "alert",
+  "asset": {
+    "tag": "K-101",
+    "name": "Export Gas Compressor",
+    "type": "Centrifugal compressor (motor-driven, VSD), dry gas seals, tilting-pad bearings",
+    "functional_location": "GP-01-COMP-K101",
+    "criticality": "A",
+    "spared": false,
+    "production_impact_per_day_usd": 600000
+  },
+  "analysis_time": "2026-10-15 12:50:00",
+  "alert_time": "2026-10-12 12:50:00",
+  "triggered_sensors": [
+    "vib_de"
+  ],
+  "hypotheses": [
+    {
+      "fm_id": "FM01",
+      "name": "Journal bearing wear (DE)",
+      "match_score": 0.794,
+      "likelihood": 0.851,
+      "support": 0.794,
+      "explained": 1.0,
+      "unexplained": []
+    },
+    {
+      "fm_id": "FM03",
+      "name": "Shaft misalignment (coupling)",
+      "match_score": 0.497,
+      "likelihood": 0.131,
+      "support": 0.497,
+      "explained": 1.0,
+      "unexplained": []
+    },
+    {
+      "fm_id": "FM04",
+      "name": "Rotor imbalance (deposit build-up or loss of material)",
+      "match_score": 0.303,
+      "likelihood": 0.018,
+      "support": 0.462,
+      "explained": 0.568,
+      "unexplained": [
+        "brg_temp_de"
+      ]
+    },
+    {
+      "fm_id": "FM02",
+      "name": "Lube oil cooler fouling / high oil temperature",
+      "match_score": 0.091,
+      "likelihood": 0.0,
+      "support": 0.166,
+      "explained": 0.432,
+      "unexplained": [
+        "vib_de",
+        "vib_nde"
+      ]
+    },
+    {
+      "fm_id": "FM07",
+      "name": "Thrust bearing wear",
+      "match_score": 0.057,
+      "likelihood": 0.0,
+      "support": 0.091,
+      "explained": 0.535,
+      "unexplained": [
+        "brg_temp_de",
+        "vib_nde"
+      ]
+    },
+    {
+      "fm_id": "FM05",
+      "name": "Impeller / aerodynamic fouling",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "vib_de",
+        "brg_temp_de",
+        "vib_nde"
+      ]
+    },
+    {
+      "fm_id": "FM06",
+      "name": "Dry gas seal degradation",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "vib_de",
+        "brg_temp_de",
+        "vib_nde"
+      ]
+    },
+    {
+      "fm_id": "FM08",
+      "name": "Anti-surge (recycle) valve passing",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "vib_de",
+        "brg_temp_de",
+        "vib_nde"
+      ]
+    },
+    {
+      "fm_id": "FM09",
+      "name": "Suction strainer / filter blockage",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "vib_de",
+        "brg_temp_de",
+        "vib_nde"
+      ]
+    }
+  ],
+  "diagnosis": {
+    "fm_id": "FM01",
+    "name": "Journal bearing wear (DE)",
+    "component": "Radial journal bearing, drive end",
+    "match_score": 0.794,
+    "likelihood": 0.851,
+    "severity": 8,
+    "pf_interval_days": 30,
+    "iso14224_failure_mode": "VIB - Vibration",
+    "mechanism": "2.4 Wear",
+    "likely_causes": [
+      "Lube oil contamination or degraded oil (particles, water, varnish)",
+      "Insufficient oil film from low supply pressure or high oil temperature",
+      "Repeated start/stop or slow-roll operation wiping the babbitt"
+    ],
+    "evidence": [
+      {
+        "sensor": "vib_de",
+        "label": "Radial vibration DE",
+        "expected": "up",
+        "weight": 1.0,
+        "z": 25.0,
+        "verdict": "supports"
+      },
+      {
+        "sensor": "brg_temp_de",
+        "label": "Journal bearing temp DE",
+        "expected": "up",
+        "weight": 1.0,
+        "z": 7.7,
+        "verdict": "supports"
+      },
+      {
+        "sensor": "vib_nde",
+        "label": "Radial vibration NDE",
+        "expected": "up",
+        "weight": 0.3,
+        "z": 4.2,
+        "verdict": "supports"
+      }
+    ],
+    "unexplained": []
+  },
+  "ambiguous": false,
+  "discriminating_checks": [],
+  "history": {
+    "count": 2,
+    "coded": 2,
+    "found_by_text_only": 0,
+    "total_cost_usd": 95200.0,
+    "total_downtime_h": 78.6,
+    "wo_ids": [
+      "WO400162",
+      "WO400199"
+    ],
+    "dates": [
+      "2024-02-02",
+      "2025-06-19"
+    ],
+    "bad_actor": true
+  },
+  "similar_work_orders": [
+    {
+      "wo_id": "WO400199",
+      "date": "2025-06-19",
+      "equipment": "K-101",
+      "short_text": "DE brg high vib + temp",
+      "long_text": "DE journal bearing vibration trending up, bearing temp high. Bearing replaced, babbitt wiped, oil sample showed high particle count.",
+      "cost_usd": 50500.0,
+      "downtime_h": 43.0,
+      "similarity": 0.462
+    },
+    {
+      "wo_id": "WO400162",
+      "date": "2024-02-02",
+      "equipment": "K-101",
+      "short_text": "K brg DE replaced",
+      "long_text": "Radial bearing DE found worn on inspection, clearance above OEM limit. New pads fitted. Lube oil changed.",
+      "cost_usd": 44700.0,
+      "downtime_h": 35.6,
+      "similarity": 0.281
+    },
+    {
+      "wo_id": "WO400156",
+      "date": "2023-12-12",
+      "equipment": "K-201",
+      "short_text": "High vibration drive end",
+      "long_text": "Vibration alarm DE probes. Shaft centreline shift. Bearing pads scored - replaced. Recommend oil cleanliness review.",
+      "cost_usd": 55200.0,
+      "downtime_h": 38.8,
+      "similarity": 0.259
+    },
+    {
+      "wo_id": "WO400109",
+      "date": "2022-03-14",
+      "equipment": "K-101",
+      "short_text": "Seal gas leak NDE",
+      "long_text": "Dry gas seal leakage NDE, faces damaged by liquids in seal gas. Seal replaced, heater repaired.",
+      "cost_usd": 163400.0,
+      "downtime_h": 72.4,
+      "similarity": 0.189
+    },
+    {
+      "wo_id": "WO400141",
+      "date": "2023-05-11",
+      "equipment": "K-102",
+      "short_text": "Realign motor-compressor",
+      "long_text": "Alignment correction after baseplate settlement. Soft foot found at NDE motor foot.",
+      "cost_usd": 20600.0,
+      "downtime_h": 22.0,
+      "similarity": 0.115
+    }
+  ],
+  "forecast": [
+    {
+      "sensor": "vib_de",
+      "label": "Radial vibration DE",
+      "unit": "um",
+      "normal": 18.0,
+      "now": 22.9,
+      "alarm": 50.0,
+      "trip": 75.0,
+      "days_to_alarm": 10.6,
+      "days_to_trip": 16.4
+    },
+    {
+      "sensor": "brg_temp_de",
+      "label": "Journal bearing temp DE",
+      "unit": "degC",
+      "normal": 85.0,
+      "now": 88.34,
+      "alarm": 110.0,
+      "trip": 120.0,
+      "days_to_alarm": 17.0,
+      "days_to_trip": 21.8
+    },
+    {
+      "sensor": "vib_nde",
+      "label": "Radial vibration NDE",
+      "unit": "um",
+      "normal": 15.0,
+      "now": 15.94,
+      "alarm": 50.0,
+      "trip": 75.0,
+      "days_to_alarm": 21.9,
+      "days_to_trip": 29.9
+    }
+  ],
+  "days_to_trip": 16.4,
+  "priority": {
+    "level": 2,
+    "label": "Urgent",
+    "window": "act within 7 days",
+    "rule_inputs": {
+      "severity": 8,
+      "days_to_trip": 16.4,
+      "criticality": "A",
+      "confidence": 0.79
+    }
+  },
+  "economics": {
+    "repair_cost_usd": 50100.0,
+    "outage_h": 39.1,
+    "unplanned_cost_usd": 1861000.0,
+    "planned_cost_usd": 441000.0,
+    "value_of_acting_now_usd": 1420000.0,
+    "basis": "Illustrative: unplanned = 2x repair + 1.8x outage at full production loss; planned = 1x repair + 40% of outage production loss."
+  },
+  "actions": {
+    "confirm": [
+      "Vibration spectrum on DE probes - rising 1x with sub-synchronous content suggests clearance growth",
+      "Shaft centreline plot - shift of journal position within bearing clearance",
+      "Lube oil sample - particle count (ISO 4406), water ppm, elemental (tin/lead = babbitt)"
+    ],
+    "immediate": [
+      "Increase monitoring of DE vibration and bearing temperature to hourly review",
+      "Take lube oil sample for urgent analysis",
+      "Verify lube oil supply pressure and temperature are within limits"
+    ],
+    "corrective": [
+      "Plan bearing inspection and replacement at next opportunity window",
+      "Check bearing clearances against OEM specification during inspection"
+    ],
+    "defect_elimination": [
+      "Initiate formal RCA: 2 'Journal bearing wear (DE)' events on K-101 in 36 months (USD 95,200, 79 h downtime). Fix the cause, not the part.",
+      "Review lube oil cleanliness programme and filter change interval",
+      "Add bearing-temperature-rate-of-change alert to condition monitoring"
+    ]
+  },
+  "notification": {
+    "notification_type": "M2 - Malfunction report",
+    "functional_location": "GP-01-COMP-K101",
+    "equipment": "K-101",
+    "priority": "2 - Urgent",
+    "short_text": "K-101 suspected Journal bearing wear (DE",
+    "damage_code": "WEAR",
+    "cause_code": "LUBE",
+    "iso14224_failure_mode": "VIB - Vibration",
+    "long_text": "Condition-monitoring alert 12-Oct-2026 12:50. Suspected Journal bearing wear (DE) (match 79%). Evidence: Radial vibration DE 22.9 um (normal 18.0), Journal bearing temp DE 88.34 degC (normal 85.0), Radial vibration NDE 15.94 um (normal 15.0). Predicted trip in 16.4 days. Recommended: Increase monitoring of DE vibration and bearing temperature to hourly review; Plan bearing inspection and replacement at next opportunity window.",
+    "status": "DRAFT - requires engineer approval"
+  },
+  "summary": "K-101 Export Gas Compressor: suspected **Journal bearing wear (DE)** (match 79%, likelihood 85% among 9 failure modes). Evidence: Radial vibration DE up (+25 sigma); Journal bearing temp DE up (+8 sigma); Radial vibration NDE up (+4 sigma). At the current trend the machine reaches a trip limit in about 16 days. This is a repeat failure on K-101 (2 events in 36 months) - a formal RCA is recommended. Priority **P2 Urgent** (act within 7 days). Planned intervention avoids roughly USD 1,420,000 versus run-to-failure (illustrative). First action: Increase monitoring of DE vibration and bearing temperature to hourly review.",
+  "approval": "PENDING ENGINEER REVIEW",
+  "trace": [
+    {
+      "step": "1 Check",
+      "tool": "detect.first_alert",
+      "result": "Persistent anomaly since 12-Oct 12:50 on vib_de."
+    },
+    {
+      "step": "2 Diagnose",
+      "tool": "diagnose.diagnose",
+      "result": "FM01 Journal bearing wear (DE): 85% | FM03 Shaft misalignment (coupling): 13% | FM04 Rotor imbalance (deposit build-up or loss of material): 2%"
+    },
+    {
+      "step": "3 Doubt",
+      "tool": "ambiguity check",
+      "result": "Clear leader (72% ahead of next hypothesis)."
+    },
+    {
+      "step": "4 Recall",
+      "tool": "history.similar_work_orders + recurrence",
+      "result": "5 similar past jobs across fleet; 2 on K-101 in 36 months -> BAD ACTOR."
+    },
+    {
+      "step": "5 Forecast",
+      "tool": "detect.time_to_limit",
+      "result": "Earliest predicted trip in 16.4 days."
+    },
+    {
+      "step": "6 Decide",
+      "tool": "priority rules",
+      "result": "P2 Urgent - act within 7 days."
+    },
+    {
+      "step": "7 Value",
+      "tool": "economics",
+      "result": "Acting now avoids ~USD 1,420,000 (illustrative)."
+    },
+    {
+      "step": "8 Prescribe",
+      "tool": "FMEA actions",
+      "result": "11 actions across 4 horizons."
+    },
+    {
+      "step": "9 Draft",
+      "tool": "CMMS notification",
+      "result": "Draft M2 notification prepared (not submitted)."
+    },
+    {
+      "step": "10 Hand over",
+      "tool": "narrative",
+      "result": "Summary written. Awaiting engineer approval - nothing executed."
+    }
+  ]
+}

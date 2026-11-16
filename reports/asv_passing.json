@@ -1,0 +1,335 @@
+{
+  "status": "alert",
+  "asset": {
+    "tag": "K-101",
+    "name": "Export Gas Compressor",
+    "type": "Centrifugal compressor (motor-driven, VSD), dry gas seals, tilting-pad bearings",
+    "functional_location": "GP-01-COMP-K101",
+    "criticality": "A",
+    "spared": false,
+    "production_impact_per_day_usd": 600000
+  },
+  "analysis_time": "2026-10-17 14:00:00",
+  "alert_time": "2026-10-14 14:00:00",
+  "triggered_sensors": [
+    "suction_temp"
+  ],
+  "hypotheses": [
+    {
+      "fm_id": "FM08",
+      "name": "Anti-surge (recycle) valve passing",
+      "match_score": 0.196,
+      "likelihood": 1.0,
+      "support": 0.196,
+      "explained": 1.0,
+      "unexplained": []
+    },
+    {
+      "fm_id": "FM05",
+      "name": "Impeller / aerodynamic fouling",
+      "match_score": 0.013,
+      "likelihood": 0.0,
+      "support": 0.036,
+      "explained": 0.195,
+      "unexplained": [
+        "suction_temp"
+      ]
+    },
+    {
+      "fm_id": "FM09",
+      "name": "Suction strainer / filter blockage",
+      "match_score": 0.011,
+      "likelihood": 0.0,
+      "support": 0.03,
+      "explained": 0.195,
+      "unexplained": [
+        "suction_temp"
+      ]
+    },
+    {
+      "fm_id": "FM01",
+      "name": "Journal bearing wear (DE)",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "suction_temp",
+        "discharge_temp"
+      ]
+    },
+    {
+      "fm_id": "FM02",
+      "name": "Lube oil cooler fouling / high oil temperature",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "suction_temp",
+        "discharge_temp"
+      ]
+    },
+    {
+      "fm_id": "FM03",
+      "name": "Shaft misalignment (coupling)",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "suction_temp",
+        "discharge_temp"
+      ]
+    },
+    {
+      "fm_id": "FM04",
+      "name": "Rotor imbalance (deposit build-up or loss of material)",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "suction_temp",
+        "discharge_temp"
+      ]
+    },
+    {
+      "fm_id": "FM06",
+      "name": "Dry gas seal degradation",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "suction_temp",
+        "discharge_temp"
+      ]
+    },
+    {
+      "fm_id": "FM07",
+      "name": "Thrust bearing wear",
+      "match_score": 0.0,
+      "likelihood": 0.0,
+      "support": 0.0,
+      "explained": 0.0,
+      "unexplained": [
+        "suction_temp",
+        "discharge_temp"
+      ]
+    }
+  ],
+  "diagnosis": {
+    "fm_id": "FM08",
+    "name": "Anti-surge (recycle) valve passing",
+    "component": "Anti-surge control valve",
+    "match_score": 0.196,
+    "likelihood": 1.0,
+    "severity": 5,
+    "pf_interval_days": 120,
+    "iso14224_failure_mode": "ILP/LOO - Internal leakage / low output",
+    "mechanism": "1.1 Leakage",
+    "likely_causes": [
+      "Seat or trim damage on recycle valve",
+      "Valve not fully closing (positioner calibration, actuator issue)"
+    ],
+    "evidence": [
+      {
+        "sensor": "suction_temp",
+        "label": "Suction temperature",
+        "expected": "up",
+        "weight": 1.0,
+        "z": 9.9,
+        "verdict": "supports"
+      },
+      {
+        "sensor": "power",
+        "label": "Motor power",
+        "expected": "up",
+        "weight": 1.0,
+        "z": 1.7,
+        "verdict": "not seen"
+      },
+      {
+        "sensor": "flow",
+        "label": "Export gas flow",
+        "expected": "down",
+        "weight": 0.8,
+        "z": 0.8,
+        "verdict": "not seen"
+      },
+      {
+        "sensor": "discharge_temp",
+        "label": "Discharge temperature",
+        "expected": "up",
+        "weight": 0.5,
+        "z": 3.0,
+        "verdict": "supports"
+      }
+    ],
+    "unexplained": []
+  },
+  "ambiguous": true,
+  "discriminating_checks": [
+    "[FM08 Anti-surge (recycle) valve passing] Valve position feedback vs demand - should be 0% at normal load",
+    "[FM08 Anti-surge (recycle) valve passing] Acoustic or temperature check downstream of valve (hot pipe when shut)"
+  ],
+  "history": {
+    "count": 0,
+    "coded": 0,
+    "found_by_text_only": 0,
+    "total_cost_usd": 0.0,
+    "total_downtime_h": 0.0,
+    "wo_ids": [],
+    "dates": [],
+    "bad_actor": false
+  },
+  "similar_work_orders": [
+    {
+      "wo_id": "WO400206",
+      "date": "2025-10-05",
+      "equipment": "K-201",
+      "short_text": "Recycle valve leak-by",
+      "long_text": "Anti-surge valve leak by, power high for throughput. Seat lapped.",
+      "cost_usd": 15300.0,
+      "downtime_h": 6.8,
+      "similarity": 0.402
+    },
+    {
+      "wo_id": "WO400148",
+      "date": "2023-08-30",
+      "equipment": "K-101",
+      "short_text": "LO cooler cleaning",
+      "long_text": "Fin fan lube oil cooler dirty, approach temp high. Cleaned and TCV checked.",
+      "cost_usd": 8900.0,
+      "downtime_h": 6.9,
+      "similarity": 0.105
+    }
+  ],
+  "forecast": [
+    {
+      "sensor": "suction_temp",
+      "label": "Suction temperature",
+      "unit": "degC",
+      "normal": 40.0,
+      "now": 42.51,
+      "alarm": 55.0,
+      "trip": 60.0,
+      "days_to_alarm": 24.7,
+      "days_to_trip": 29.8
+    },
+    {
+      "sensor": "discharge_temp",
+      "label": "Discharge temperature",
+      "unit": "degC",
+      "normal": 135.0,
+      "now": 138.33,
+      "alarm": 150.0,
+      "trip": 160.0,
+      "days_to_alarm": 32.8,
+      "days_to_trip": 47.0
+    }
+  ],
+  "days_to_trip": 29.8,
+  "priority": {
+    "level": 3,
+    "label": "Planned",
+    "window": "schedule within 30 days (confirm diagnosis first - low confidence)",
+    "rule_inputs": {
+      "severity": 5,
+      "days_to_trip": 29.8,
+      "criticality": "A",
+      "confidence": 0.2
+    }
+  },
+  "economics": {
+    "repair_cost_usd": 15300.0,
+    "outage_h": 6.8,
+    "unplanned_cost_usd": 337000.0,
+    "planned_cost_usd": 83000.0,
+    "value_of_acting_now_usd": 253000.0,
+    "basis": "Illustrative: unplanned = 2x repair + 1.8x outage at full production loss; planned = 1x repair + 40% of outage production loss."
+  },
+  "actions": {
+    "confirm": [
+      "[FM08 Anti-surge (recycle) valve passing] Valve position feedback vs demand - should be 0% at normal load",
+      "[FM08 Anti-surge (recycle) valve passing] Acoustic or temperature check downstream of valve (hot pipe when shut)"
+    ],
+    "immediate": [
+      "Check positioner, stroke the valve if safe to do so",
+      "Quantify recycled energy loss (kW and USD/day)"
+    ],
+    "corrective": [
+      "Overhaul valve trim at next opportunity"
+    ],
+    "defect_elimination": [
+      "Add valve signature / partial stroke diagnostics"
+    ]
+  },
+  "notification": {
+    "notification_type": "M2 - Malfunction report",
+    "functional_location": "GP-01-COMP-K101",
+    "equipment": "K-101",
+    "priority": "3 - Planned",
+    "short_text": "K-101 suspected Anti-surge (recycle) val",
+    "damage_code": "LEAK",
+    "cause_code": "WEAR",
+    "iso14224_failure_mode": "ILP/LOO - Internal leakage / low output",
+    "long_text": "Condition-monitoring alert 14-Oct-2026 14:00. Suspected Anti-surge (recycle) valve passing (match 20%). Evidence: Suction temperature 42.51 degC (normal 40.0), Discharge temperature 138.33 degC (normal 135.0). Predicted trip in 29.8 days. Recommended: Check positioner, stroke the valve if safe to do so; Overhaul valve trim at next opportunity.",
+    "status": "DRAFT - requires engineer approval"
+  },
+  "summary": "K-101 Export Gas Compressor: suspected **Anti-surge (recycle) valve passing** (match 20%, likelihood 100% among 9 failure modes). Evidence: Suction temperature up (+10 sigma); Discharge temperature up (+3 sigma). Diagnosis not yet conclusive - Impeller / aerodynamic fouling is close behind. Run the discriminating checks first. At the current trend the machine reaches a trip limit in about 30 days. Priority **P3 Planned** (schedule within 30 days (confirm diagnosis first - low confidence)). Planned intervention avoids roughly USD 253,000 versus run-to-failure (illustrative). First action: [FM08 Anti-surge (recycle) valve passing] Valve position feedback vs demand - should be 0% at normal load.",
+  "approval": "PENDING ENGINEER REVIEW",
+  "trace": [
+    {
+      "step": "1 Check",
+      "tool": "detect.first_alert",
+      "result": "Persistent anomaly since 14-Oct 14:00 on suction_temp."
+    },
+    {
+      "step": "2 Diagnose",
+      "tool": "diagnose.diagnose",
+      "result": "FM08 Anti-surge (recycle) valve passing: 100% | FM05 Impeller / aerodynamic fouling: 0% | FM09 Suction strainer / filter blockage: 0%"
+    },
+    {
+      "step": "3 Doubt",
+      "tool": "ambiguity check",
+      "result": "Top hypotheses only 100% apart - recommending discriminating checks before committing."
+    },
+    {
+      "step": "4 Recall",
+      "tool": "history.similar_work_orders + recurrence",
+      "result": "2 similar past jobs across fleet; 0 on K-101 in 36 months."
+    },
+    {
+      "step": "5 Forecast",
+      "tool": "detect.time_to_limit",
+      "result": "Earliest predicted trip in 29.8 days."
+    },
+    {
+      "step": "6 Decide",
+      "tool": "priority rules",
+      "result": "P3 Planned - schedule within 30 days (confirm diagnosis first - low confidence)."
+    },
+    {
+      "step": "7 Value",
+      "tool": "economics",
+      "result": "Acting now avoids ~USD 253,000 (illustrative)."
+    },
+    {
+      "step": "8 Prescribe",
+      "tool": "FMEA actions",
+      "result": "6 actions across 4 horizons."
+    },
+    {
+      "step": "9 Draft",
+      "tool": "CMMS notification",
+      "result": "Draft M2 notification prepared (not submitted)."
+    },
+    {
+      "step": "10 Hand over",
+      "tool": "narrative",
+      "result": "Summary written. Awaiting engineer approval - nothing executed."
+    }
+  ]
+}
